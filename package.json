@@ -1,13 +1,13 @@
 {
     "name": "webpack-strip-blocks",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Webpack plugin to strip blocks of code that's only intended for development purposes",
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "git://git@github.com/huanz/webpack-strip-block.git"
+        "url": "git://git@github.com:ee01/webpack-strip-blocks.git"
     },
-    "homepage": "https://github.com/huanz/webpack-strip-block",
+    "homepage": "https://github.com/ee01/webpack-strip-blocks",
     "keywords": [
         "webpack",
         "webpackloader",
@@ -22,6 +22,10 @@
         "name": "Alexander Wunschik",
         "email": "mail@wunschik.it",
         "url": "http://www.wunschik.it"
+    }, {
+        "name": "Esone MacGhilleseatheaiche",
+        "email": "01@eexx.me",
+        "url": "http://it.eexx.me"
     }],
     "license": "MIT",
     "peerDependencies": {

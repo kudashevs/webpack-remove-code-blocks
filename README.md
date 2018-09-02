@@ -3,6 +3,8 @@ Webpack Strip Block
 
 Webpack loader to strip blocks of code marked by special comment tags. Useful for removing code that you don't want in your production webpack bundle (e.g. verbose console warnings, etc).
 
+Support multiple block types.
+
 ### Example:
 
 In your client js source files:
@@ -39,10 +41,25 @@ var makeFoo = function(bar, baz) {
 In your webpack config, specify the loader:
 
 ```javascript
-var blocks = ['develblock'];
+var blocks = [{
+    block: 'develblock',
+    start: '/*',
+    end: '*/'
+}, {
+    block: 'develblock',
+    start: '<!--',
+    end: '-->'
+}, {
+    block: 'develblock2',
+    start: '//'
+}, 'develblock3'];
 
 if (process.env.NODE_ENV === 'development') {
-    blocks.push('debug');
+    blocks.push({
+        block: 'debug',
+        start: '/*',
+        end: '*/'
+    });
 }
 
 module.exports = {
@@ -55,9 +72,10 @@ module.exports = {
                 use: [{
                     loader: 'webpack-strip-blocks',
                     options: {
-                        blocks: blocks,
-                        start: '/*',
-                        end: '*/'
+                        blocks: ['develblock', {
+                            block: 'develblock',
+                            start: '//'
+                        }]
                     }
                 }]
             }, {
@@ -66,9 +84,7 @@ module.exports = {
                 use: [{
                     loader: 'webpack-strip-blocks',
                     options: {
-                        blocks: blocks,
-                        start: '<!--',
-                        end: '-->'
+                        blocks: blocks
                     }
                 }]
             }
@@ -106,9 +122,7 @@ mix.webpackConfig( {
           {
             loader  : 'webpack-strip-blocks',
             options : {
-              blocks : blocks,
-              start  : '/*',
-              end    : '*/'
+              blocks : blocks
             }
           }
         ]
