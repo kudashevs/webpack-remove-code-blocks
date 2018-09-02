@@ -1,7 +1,7 @@
-Webpack Strip Block
+Webpack Remove Block
 ===================
 
-Webpack loader to strip blocks of code marked by special comment tags. Useful for removing code that you don't want in your production webpack bundle (e.g. verbose console warnings, etc).
+Webpack loader to remove blocks of code marked by special comment tags. Useful for removing code that you don't want in your production webpack bundle (e.g. verbose console warnings, etc).
 
 Support multiple block types.
 
@@ -15,7 +15,7 @@ console.log('debug');
 /* debug:end */
 
 var makeFoo = function(bar, baz) {
-    // The following code will be stripped with our webpack loader
+    // The following code will be removed with our webpack loader
     /* develblock:start */
     if (bar instanceof Bar !== true) {
         throw new Error('makeFoo: bar param is required and must be instance of Bar');
@@ -70,7 +70,7 @@ module.exports = {
                 enforce: 'pre',
                 exclude: /(node_modules|bower_components|\.spec\.js)/,
                 use: [{
-                    loader: 'webpack-strip-blocks',
+                    loader: 'webpack-remove-blocks',
                     options: {
                         blocks: ['develblock', {
                             block: 'develblock',
@@ -82,7 +82,7 @@ module.exports = {
                 test: /\.html$/,
                 enforce: 'pre',
                 use: [{
-                    loader: 'webpack-strip-blocks',
+                    loader: 'webpack-remove-blocks',
                     options: {
                         blocks: blocks
                     }
@@ -100,12 +100,12 @@ let mix = require( 'laravel-mix' );
 
 /*
  |--------------------------------------------------------------------------
- | Webpack Strip Blocks
+ | Webpack Remove Blocks
  |--------------------------------------------------------------------------
  |
- | Here you can define your custom strip tags. For example, you may use:
+ | Here you can define your custom remove tags. For example, you may use:
  | [ 'develblock', 'debug' ]
- | in order to strip "debug:start" and "debug:end" as well
+ | in order to remove "debug:start" and "debug:end" as well
  |
  */
 
@@ -120,7 +120,7 @@ mix.webpackConfig( {
         exclude : /(node_modules|bower_components|\.spec\.js)/,
         use     : [
           {
-            loader  : 'webpack-strip-blocks',
+            loader  : 'webpack-remove-blocks',
             options : {
               blocks : blocks
             }

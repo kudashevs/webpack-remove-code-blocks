@@ -1,16 +1,21 @@
 {
-    "name": "webpack-strip-blocks",
+    "name": "webpack-remove-blocks",
     "version": "1.1.0",
-    "description": "Webpack plugin to strip blocks of code that's only intended for development purposes",
+    "description": "Webpack plugin to remove blocks of code that's only intended for development purposes",
     "main": "index.js",
     "repository": {
         "type": "git",
-        "url": "git://git@github.com:ee01/webpack-strip-blocks.git"
+        "url": "git://git@github.com:ee01/webpack-remove-blocks.git"
     },
-    "homepage": "https://github.com/ee01/webpack-strip-blocks",
+    "homepage": "https://github.com/ee01/webpack-remove-blocks",
     "keywords": [
         "webpack",
         "webpackloader",
+        "webpack-strip-blocks",
+        "webpack-strip-block",
+        "remove",
+        "blocks",
+        "removecode",
         "stripcode"
     ],
     "author": {
@@ -23,7 +28,7 @@
         "email": "mail@wunschik.it",
         "url": "http://www.wunschik.it"
     }, {
-        "name": "Esone MacGhilleseatheaiche",
+        "name": "Esone MacGhilleseatheanaich",
         "email": "01@eexx.me",
         "url": "http://it.eexx.me"
     }],
