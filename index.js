@@ -12,11 +12,11 @@ function StripBlockLoader(content) {
 	if (options && options.blocks) {
 		options.blocks.forEach(function (block) {
 			if (typeof block === 'string') {
-				block = {block, suffix: '/*', end: '*/'}
+				block = {block, prefix: '/*', suffix: '*/'}
 			}
+			let prefix = block.prefix ? regexEscape(block.prefix) : '';
 			let suffix = block.suffix ? regexEscape(block.suffix) : '';
-			let end = block.end ? regexEscape(block.end) : '';
-			var regex = new RegExp('[\\t ]*' + suffix + ' ?(' + block.block + '):start ?' + end + '[\\s\\S]*?' + suffix + ' ?\\1:end ?' + end + '[\\t ]*\\n?', 'g');
+			var regex = new RegExp('[\\t ]*' + prefix + ' ?(' + block.block + '):start ?' + suffix + '[\\s\\S]*?' + prefix + ' ?\\1:end ?' + suffix + '[\\t ]*\\n?', 'g');
 			content = content.replace(regex, '');
 		});
 	}

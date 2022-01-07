@@ -30,7 +30,7 @@ describe('basic case with object parameter', () => {
                     {
                         block: 'develblock',
                         prefix: '/*',
-                        end: '*/'
+                        suffix: '*/'
                     }]
             }
         });
