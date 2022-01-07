@@ -1,9 +1,12 @@
-Webpack Remove Block
+Webpack Remove Code
 ===================
 
-Webpack loader to remove blocks of code marked by special comment tags. Useful for removing code that you don't want in your production webpack bundle (e.g. verbose console warnings, etc).
+This Webpack Remove Code package was originated from [Webpack Remove Block](https://github.com/ee01/webpack-remove-blocks). 
 
-Support multiple block types.
+This is a webpack loader that removes blocks of code which were marked with the specific comment tags. It is useful
+for removing the code that you don't want to see in production. This loader supports multiple block types.
+
+The key difference form the original loader that the syntax is not limited by using `:start` and `:end` markers.
 
 ### Example:
 
