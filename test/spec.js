@@ -8,6 +8,20 @@ module.exports = function addOne(num) {
     return num + one;
 }`;
 
+describe('basic case with string parameter', () => {
+    it('removes the appropriate block and leaves other code unchanged', async () => {
+        const stats = await testCompiler('fixtures/basic-case', {
+            options: {
+                'blocks': [
+                    'develblock'
+                ]
+            }
+        });
+        const output = stats.toJson().modules[0].source;
+        assert.equal(output, EXPECTED_OUTPUT_BASIC_CASE);
+    });
+});
+
 describe('basic case with object parameter', () => {
     it('removes the appropriate block and leaves other code unchanged', async () => {
         const stats = await testCompiler('fixtures/basic-case', {
