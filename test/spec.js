@@ -29,7 +29,7 @@ describe('basic case with object parameter', () => {
                 'blocks': [
                     {
                         block: 'develblock',
-                        start: '/*',
+                        prefix: '/*',
                         end: '*/'
                     }]
             }
