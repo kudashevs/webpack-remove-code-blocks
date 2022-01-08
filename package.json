@@ -18,20 +18,17 @@
         "webpack-strip-blocks",
         "webpack-remove-blocks"
     ],
-    "author": {
-        "name": "James Ballantine",
-        "email": "james@1stdibs.com",
-        "url": "http://www.1stdibs.com"
-    },
-    "contributors": [{
-        "name": "Alexander Wunschik",
-        "email": "mail@wunschik.it",
-        "url": "http://www.wunschik.it"
-    }, {
-        "name": "Esone MacGhilleseatheanaich",
-        "email": "01@eexx.me",
-        "url": "http://it.eexx.me"
-    }],
+    "authors": [
+        {
+            "name": "James Ballantine",
+            "email": "james@1stdibs.com",
+            "url": "http://www.1stdibs.com"
+        },
+        {
+            "name": "Sergey Kudashev",
+            "email": "kudashevs@gmail.com"
+        }
+    ],
     "license": "MIT",
     "peerDependencies": {
         "webpack": ">=2.2.0"
