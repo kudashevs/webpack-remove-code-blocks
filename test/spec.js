@@ -8,7 +8,7 @@ module.exports = function addOne(num) {
     return num + one;
 }`;
 
-describe('basic case with string parameter', () => {
+describe('basic case with a string parameter', () => {
     it('removes the appropriate block and leaves other code unchanged', async () => {
         const stats = await testCompiler('fixtures/basic-case.js', {
             options: {
@@ -23,7 +23,7 @@ describe('basic case with string parameter', () => {
     });
 });
 
-describe('basic case with object parameter', () => {
+describe('basic case with an object parameter', () => {
     it('removes the appropriate block and leaves other code unchanged', async () => {
         const stats = await testCompiler('fixtures/basic-case.js', {
             options: {
