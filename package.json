@@ -3,11 +3,8 @@
     "version": "1.0.0",
     "description": "Webpack plugin that removes blocks of code from the code by the specific patterns.",
     "main": "index.js",
-    "repository": {
-        "type": "git",
-        "url": "git://git@github.com:ee01/webpack-remove-blocks.git"
-    },
-    "homepage": "https://github.com/ee01/webpack-remove-blocks",
+    "repository": "kudashevs/webpack-remove-code-blocks",
+    "homepage": "https://github.com/kudashevs/webpack-remove-code-blocks",
     "keywords": [
         "webpack",
         "blocks",
