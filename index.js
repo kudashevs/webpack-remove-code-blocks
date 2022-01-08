@@ -1,7 +1,7 @@
 /*jslint node:true */
 'use strict';
 
-var loaderUtils = require('loader-utils');
+const loaderUtils = require('loader-utils');
 
 function regexEscape(str) {
 	return str.replace(/([\^|\$|\.|\*|\+|\?|\=|\!|\:|\\|\/|\(|\)|\[|\]|\{|\}])/gi, '\\$1');
