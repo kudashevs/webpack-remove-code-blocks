@@ -10,13 +10,13 @@
     "homepage": "https://github.com/ee01/webpack-remove-blocks",
     "keywords": [
         "webpack",
-        "webpackloader",
-        "webpack-strip-blocks",
-        "webpack-strip-block",
-        "remove",
         "blocks",
-        "removecode",
-        "stripcode"
+        "strip code",
+        "remove code",
+        "remove code blocks",
+        "webpack-loader",
+        "webpack-strip-blocks",
+        "webpack-remove-blocks"
     ],
     "author": {
         "name": "James Ballantine",
