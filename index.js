@@ -8,7 +8,7 @@ function regexEscape(str) {
 }
 
 function RemoveCodeBlocksLoader(content) {
-	var options = loaderUtils.getOptions(this);
+	const options = loaderUtils.getOptions(this);
 	if (options && options.blocks) {
 		options.blocks.forEach(function (block) {
 			if (typeof block === 'string') {
