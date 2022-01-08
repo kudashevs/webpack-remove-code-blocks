@@ -17,7 +17,7 @@ describe('basic case with a string parameter', () => {
                 ]
             }
         });
-        const output = stats.toJson().modules[0].source;
+        const output = stats.toJson({ source: true }).modules[0].source;
 
         assert.equal(output, EXPECTED_OUTPUT_BASIC_CASE);
     });
@@ -36,7 +36,7 @@ describe('basic case with an object parameter', () => {
                     }]
             }
         });
-        const output = stats.toJson().modules[0].source;
+        const output = stats.toJson({ source: true }).modules[0].source;
 
         assert.equal(output, EXPECTED_OUTPUT_BASIC_CASE);
     });
@@ -67,7 +67,7 @@ describe('complex case with a string parameter and an object parameter', () => {
                     }]
             }
         });
-        const output = stats.toJson().modules[0].source;
+        const output = stats.toJson({ source: true }).modules[0].source;
 
         assert.equal(output, EXPECTED_OUTPUT_COMPLEX_CASE);
     });
