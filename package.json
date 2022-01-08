@@ -1,44 +1,50 @@
 {
-    "name": "webpack-remove-code-blocks",
-    "version": "0.1.0",
-    "description": "A webpack plugin that removes blocks of code from the code by the specific patterns.",
-    "license": "MIT",
-    "main": "index.js",
-    "repository": "kudashevs/webpack-remove-code-blocks",
-    "homepage": "https://github.com/kudashevs/webpack-remove-code-blocks",
-    "keywords": [
-        "webpack",
-        "blocks",
-        "strip code",
-        "remove code",
-        "remove code blocks",
-        "webpack-loader",
-        "webpack-strip-blocks",
-        "webpack-remove-blocks"
-    ],
-    "authors": [
-        {
-            "name": "James Ballantine",
-            "email": "james@1stdibs.com",
-            "url": "http://www.1stdibs.com"
-        },
-        {
-            "name": "Sergey Kudashev",
-            "email": "kudashevs@gmail.com"
-        }
-    ],
-    "peerDependencies": {
-        "webpack": ">=3.0.0"
+  "name": "webpack-remove-code-blocks",
+  "version": "0.1.0",
+  "description": "A webpack plugin that removes blocks of code from the code by the specific patterns.",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kudashevs/webpack-remove-code-blocks.git"
+  },
+  "homepage": "https://github.com/kudashevs/webpack-remove-code-blocks",
+  "keywords": [
+    "webpack",
+    "blocks",
+    "strip code",
+    "remove code",
+    "remove code blocks",
+    "webpack-loader",
+    "webpack-strip-blocks",
+    "webpack-remove-blocks"
+  ],
+  "authors": [
+    {
+      "name": "James Ballantine",
+      "email": "james@1stdibs.com",
+      "url": "http://www.1stdibs.com"
     },
-    "dependencies": {
-        "loader-utils": "^1.1.0"
-    },
-    "devDependencies": {
-        "memfs": "^3.4.1",
-        "mocha": "^7.1.1",
-        "webpack": "^4.46.0"
-    },
-    "scripts": {
-        "test": "mocha"
+    {
+      "name": "Sergey Kudashev",
+      "email": "kudashevs@gmail.com"
     }
+  ],
+  "peerDependencies": {
+    "webpack": ">=3.0.0"
+  },
+  "dependencies": {
+    "loader-utils": "^1.1.0"
+  },
+  "devDependencies": {
+    "memfs": "^3.4.1",
+    "mocha": "^7.1.1",
+    "webpack": "^4.46.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "bugs": {
+    "url": "https://github.com/kudashevs/webpack-remove-code-blocks/issues"
+  }
 }
