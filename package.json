@@ -39,6 +39,7 @@
   "devDependencies": {
     "memfs": "^3.4.1",
     "mocha": "^7.1.1",
+    "prettier": "^2.5.1",
     "webpack": "^4.46.0"
   },
   "scripts": {
