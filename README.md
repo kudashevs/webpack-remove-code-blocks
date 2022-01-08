@@ -8,86 +8,54 @@ for removing the code that you don't want to see in production. This loader supp
 
 The key difference form the original loader that the syntax is not limited by using `:start` and `:end` markers.
 
-### Example:
+## Example
 
-In your client js source files:
+As an example, in place where we need to omit some code in our js files we can add the comments with the following syntax:
 
 ```javascript
 /* debug:start */
 console.log('debug');
 /* debug:end */
-
 var makeFoo = function(bar, baz) {
-    // The following code will be removed with our webpack loader
-    /* develblock:start */
+    // The following code will be removed with the loader
+    /* devblock:start */
     if (bar instanceof Bar !== true) {
         throw new Error('makeFoo: bar param is required and must be instance of Bar');
     }
-    /* develblock:end */
+    /* devblock:end */
 
-    // This code would remain
+    /* devblock_start */
+    if (baz instanceof Baz !== true) {
+        throw new Error('makeFoo: baz param is required and must be instance of Baz');
+    }
+    /* devblock_end */
+
+    // This code will remain
     return new Foo(bar, baz);
 }
-
 ```
 
-```html
-<div>
-    <!-- develblock:start -->
-    <div class="debug">
-
-    </div>
-    <!-- develblock:end -->
-</div>
-```
-
-In your webpack config, specify the loader:
+Then, we need to update our webpack config with the specific options and the loader:
 
 ```javascript
-var blocks = [{
-    block: 'develblock',
-    start: '/*',
-    end: '*/'
-}, {
-    block: 'develblock',
-    start: '<!--',
-    end: '-->'
-}, {
-    block: 'develblock2',
-    start: '//'
-}, 'develblock3'];
-
-if (process.env.NODE_ENV === 'development') {
-    blocks.push({
-        block: 'debug',
-        start: '/*',
-        end: '*/'
-    });
-}
-
 module.exports = {
     module: {
         rules: [
             {
                 test: /\.js$/,
-                enforce: 'pre',
                 exclude: /(node_modules|bower_components|\.spec\.js)/,
                 use: [{
-                    loader: 'webpack-remove-blocks',
+                    loader: 'webpack-remove-code-blocks',
                     options: {
-                        blocks: ['develblock', {
-                            block: 'develblock',
-                            start: '//'
-                        }]
-                    }
-                }]
-            }, {
-                test: /\.html$/,
-                enforce: 'pre',
-                use: [{
-                    loader: 'webpack-remove-blocks',
-                    options: {
-                        blocks: blocks
+                        'blocks': [
+                            'debug',
+                            'devblock',
+                            {
+                                start: 'devblock_start',
+                                end: 'devblock_end',
+                                prefix: '/*',
+                                suffix: '*/'
+                            }]
                     }
                 }]
             }
@@ -96,42 +64,13 @@ module.exports = {
 };
 ```
 
-## Laravel Mix sample
+After a bundling process we will get the following result:
+```javascript
+var makeFoo = function(bar, baz) {
+    // The following code will be removed with the loader
 
-```
-let mix = require( 'laravel-mix' );
 
-/*
- |--------------------------------------------------------------------------
- | Webpack Remove Blocks
- |--------------------------------------------------------------------------
- |
- | Here you can define your custom remove tags. For example, you may use:
- | [ 'develblock', 'debug' ]
- | in order to remove "debug:start" and "debug:end" as well
- |
- */
-
-const blocks = mix.inProduction() ? [ 'develblock' ] : null;
-
-mix.webpackConfig( {
-  module  : {
-    rules : [
-      {
-        test    : /\.js$/,
-        enforce : 'pre',
-        exclude : /(node_modules|bower_components|\.spec\.js)/,
-        use     : [
-          {
-            loader  : 'webpack-remove-blocks',
-            options : {
-              blocks : blocks
-            }
-          }
-        ]
-      }
-    ]
-  }
-} );
-
+    // This code will remain
+    return new Foo(bar, baz);
+}
 ```
