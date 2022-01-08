@@ -43,7 +43,8 @@
     "webpack": "^4.46.0"
   },
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "format": "prettier --write \"**/*.+(js|json)\" --"
   },
   "bugs": {
     "url": "https://github.com/kudashevs/webpack-remove-code-blocks/issues"
