@@ -10,7 +10,7 @@ module.exports = function addOne(num) {
 
 describe('basic case with string parameter', () => {
     it('removes the appropriate block and leaves other code unchanged', async () => {
-        const stats = await testCompiler('fixtures/basic-case', {
+        const stats = await testCompiler('fixtures/basic-case.js', {
             options: {
                 'blocks': [
                     'develblock'
@@ -25,7 +25,7 @@ describe('basic case with string parameter', () => {
 
 describe('basic case with object parameter', () => {
     it('removes the appropriate block and leaves other code unchanged', async () => {
-        const stats = await testCompiler('fixtures/basic-case', {
+        const stats = await testCompiler('fixtures/basic-case.js', {
             options: {
                 'blocks': [
                     {
