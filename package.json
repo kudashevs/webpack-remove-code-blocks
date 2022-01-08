@@ -31,7 +31,7 @@
     ],
     "license": "MIT",
     "peerDependencies": {
-        "webpack": ">=2.2.0"
+        "webpack": ">=3.0.0"
     },
     "dependencies": {
         "loader-utils": "^1.1.0"
