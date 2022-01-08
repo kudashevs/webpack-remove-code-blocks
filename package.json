@@ -1,7 +1,7 @@
 {
     "name": "webpack-remove-code-blocks",
     "version": "1.0.0",
-    "description": "Webpack plugin that removes blocks of code from the code by the specific patterns.",
+    "description": "A webpack plugin that removes blocks of code from the code by the specific patterns.",
     "license": "MIT",
     "main": "index.js",
     "repository": "kudashevs/webpack-remove-code-blocks",
