@@ -12,11 +12,11 @@ function RemoveCodeBlocksLoader(content) {
 	if (options && options.blocks) {
 		options.blocks.forEach(function (block) {
 			if (typeof block === 'string') {
-				block = {block, prefix: '/*', suffix: '*/'}
+				block = {start: block + ':start', end: block + ':end', prefix: '/*', suffix: '*/'}
 			}
 			let prefix = block.prefix ? regexEscape(block.prefix) : '';
 			let suffix = block.suffix ? regexEscape(block.suffix) : '';
-			var regex = new RegExp('[\\t ]*' + prefix + ' ?(' + block.block + '):start ?' + suffix + '[\\s\\S]*?' + prefix + ' ?\\1:end ?' + suffix + '[\\t ]*\\n?', 'g');
+			var regex = new RegExp('[\\t ]*' + prefix + ' ?' + block.start + ' ?' + suffix + '[\\s\\S]*?' + prefix + ' ?' + block.end + ' ?' + suffix + '[\\t ]*\\n?', 'g');
 			content = content.replace(regex, '');
 		});
 	}

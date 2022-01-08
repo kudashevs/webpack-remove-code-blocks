@@ -29,7 +29,8 @@ describe('basic case with object parameter', () => {
             options: {
                 'blocks': [
                     {
-                        block: 'develblock',
+                        start: 'develblock:start',
+                        end: 'develblock:end',
                         prefix: '/*',
                         suffix: '*/'
                     }]
