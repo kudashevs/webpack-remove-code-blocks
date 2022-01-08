@@ -74,3 +74,7 @@ var makeFoo = function(bar, baz) {
     return new Foo(bar, baz);
 }
 ```
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
