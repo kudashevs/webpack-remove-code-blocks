@@ -1,21 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const memfs = require('memfs');
-const { createFsFromVolume, Volume } = memfs;
-const joinPath = require('memory-fs/lib/join');
-
-function ensureWebpackMemoryFs(fs) {
-    // Return it back, when it has Webpack 'join' method
-    if (fs.join) {
-        return fs;
-    }
-
-    // Create FS proxy, adding `join` method to memfs, but not modifying original object
-    const nextFs = Object.create(fs);
-    nextFs.join = joinPath;
-
-    return nextFs;
-}
+const { createFsFromVolume, Volume } = require('memfs');
 
 module.exports = function testCompiler(fixture, options = {}) {
     const compiler = webpack({
@@ -36,11 +21,8 @@ module.exports = function testCompiler(fixture, options = {}) {
         }
     });
 
-    // create in-memory fs for testing
-    let webpackFs = createFsFromVolume(new Volume());
-    webpackFs = ensureWebpackMemoryFs(webpackFs);
-    compiler.outputFileSystem = webpackFs;
-    compiler.resolvers.context.fileSystem = webpackFs;
+    compiler.outputFileSystem = createFsFromVolume(new Volume());
+    compiler.outputFileSystem.join = path.join.bind(path);
 
     return new Promise((resolve, reject) => {
         compiler.run((err, stats) => {
