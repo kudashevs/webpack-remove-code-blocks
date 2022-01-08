@@ -44,23 +44,26 @@ module.exports = {
             {
                 test: /\.js$/,
                 exclude: /(node_modules|bower_components|\.spec\.js)/,
-                use: [{
-                    loader: 'webpack-remove-code-blocks',
-                    options: {
-                        'blocks': [
-                            'debug',
-                            'devblock',
-                            {
-                                start: 'devblock_start',
-                                end: 'devblock_end',
-                                prefix: '/*',
-                                suffix: '*/'
-                            }]
-                    }
-                }]
-            }
-        ]
-    }
+                use: [
+                    {
+                        loader: 'webpack-remove-code-blocks',
+                        options: {
+                            blocks: [
+                                'debug',
+                                'devblock',
+                                {
+                                    start: 'devblock_start',
+                                    end: 'devblock_end',
+                                    prefix: '/*',
+                                    suffix: '*/',
+                                },
+                            ],
+                        },
+                    },
+                ],
+            },
+        ],
+    },
 };
 ```
 
