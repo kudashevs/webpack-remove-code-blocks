@@ -7,7 +7,7 @@ function regexEscape(str) {
 	return str.replace(/([\^|\$|\.|\*|\+|\?|\=|\!|\:|\\|\/|\(|\)|\[|\]|\{|\}])/gi, '\\$1');
 }
 
-function StripBlockLoader(content) {
+function RemoveCodeBlocksLoader(content) {
 	var options = loaderUtils.getOptions(this);
 	if (options && options.blocks) {
 		options.blocks.forEach(function (block) {
@@ -28,4 +28,4 @@ function StripBlockLoader(content) {
 	return content;
 }
 
-module.exports = StripBlockLoader;
+module.exports = RemoveCodeBlocksLoader;
