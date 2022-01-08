@@ -17,7 +17,7 @@ function ensureWebpackMemoryFs(fs) {
     return nextFs;
 }
 
-module.exports = function testCompiler(fixture, parameters = {}) {
+module.exports = function testCompiler(fixture, options = {}) {
     const compiler = webpack({
         context: __dirname,
         entry: `./${fixture}`,
@@ -30,7 +30,7 @@ module.exports = function testCompiler(fixture, parameters = {}) {
                 test: /\.css$|\.scss|\.js$/,
                 use: {
                     loader: path.resolve(__dirname, '../index.js'),
-                    ...parameters
+                    ...options
                 }
             }]
         }
