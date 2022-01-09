@@ -15,7 +15,7 @@ module.exports = function testCompiler(fixture, options = {}) {
         {
           test: /\.js$/,
           use: {
-            loader: path.resolve(__dirname, '../index.js'),
+            loader: path.resolve(__dirname, '../src/index.js'),
             ...options,
           },
         },

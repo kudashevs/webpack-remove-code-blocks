@@ -3,7 +3,7 @@
   "version": "0.1.2",
   "description": "A webpack plugin that removes blocks of code from the code by the specific patterns.",
   "license": "MIT",
-  "main": "index.js",
+  "main": "./src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kudashevs/webpack-remove-code-blocks.git"
