@@ -12,6 +12,7 @@ jobs:
       fail-fast: true
       matrix:
         node-version: [ 12.x, 14.x, 16.x, 17.x ]
+        webpack-version: [ 3, 4, 5 ]
 
     steps:
       - uses: actions/checkout@v2
@@ -19,7 +20,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
+      - run: npm i webpack@${{ matrix.webpack-version }}
       - run: |
           if [[ "${{matrix.node-version}}" == "17.x" ]]; then
             export NODE_OPTIONS=--openssl-legacy-provider && npm test
