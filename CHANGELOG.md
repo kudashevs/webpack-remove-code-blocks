@@ -2,6 +2,11 @@
 
 All Notable changes to ` webpack-remove-code-blocks` will be documented in this file
 
+## [v0.1.3 - 2022-01-09](https://github.com/kudashevs/webpack-remove-code-blocks/compare/v0.1.2...v0.1.3)
+
+- Move the loader to the src folder
+- Add webpack matrix to the Github workflow
+
 ## [v0.1.2 - 2022-01-08](https://github.com/kudashevs/webpack-remove-code-blocks/compare/v0.1.1...v0.1.2)
 
 - Revert back the package-lock.json file
