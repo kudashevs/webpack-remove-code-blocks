@@ -1,4 +1,4 @@
-Webpack Remove Code Blocks
+Webpack Remove Code Blocks ![test workflow](https://github.com/kudashevs/webpack-remove-code-blocks/actions/workflows/run-test.yml/badge.svg)
 ==========================
 
 This Webpack Remove Code Blocks package was originated from [Webpack Remove Block](https://github.com/ee01/webpack-remove-blocks). 
