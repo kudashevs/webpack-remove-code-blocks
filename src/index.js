@@ -3,6 +3,9 @@
 
 const loaderUtils = require('loader-utils');
 
+/**
+ * @param {string} str
+ */
 function regexEscape(str) {
   return str.replace(
     /([\^|\$|\.|\*|\+|\?|\=|\!|\:|\\|\/|\(|\)|\[|\]|\{|\}])/gi,
@@ -10,6 +13,11 @@ function regexEscape(str) {
   );
 }
 
+/**
+ * @param {string} content
+ *
+ * @returns {string}
+ */
 function RemoveCodeBlocksLoader(content) {
   const options = loaderUtils.getOptions(this);
   if (options && options.blocks) {
