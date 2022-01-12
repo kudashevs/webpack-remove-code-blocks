@@ -41,7 +41,10 @@ module.exports = {
 
 After a bundling process this `console.log` code in the comments block will be removed (the comments will be removed too).
 
-As an example, in place where we need to omit some code in our js files we can add the comments with the following syntax:
+## Advanced usage
+
+Let's suppose, that we have a more sophisticated case, which includes lots of blocks to be removed. That is not a problem.
+The only thing we need to do is to update the webpack configuration with the specific options.
 
 ```javascript
 /* debug:start */
@@ -66,7 +69,7 @@ var makeFoo = function(bar, baz) {
 }
 ```
 
-Then, we need to update our webpack config with the specific options and the loader:
+Then, we need to update our webpack configuration with the specific options and the loader:
 
 ```javascript
 module.exports = {
