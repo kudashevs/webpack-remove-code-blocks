@@ -99,6 +99,7 @@ module.exports = {
 ```
 
 After a bundling process we will get the following result:
+
 ```javascript
 var makeFoo = function(bar, baz) {
     // The following code will be removed with the loader
