@@ -2,6 +2,13 @@
 
 All Notable changes to ` webpack-remove-code-blocks` will be documented in this file
 
+## [v0.1.4 - 2022-01-12](https://github.com/kudashevs/webpack-remove-code-blocks/compare/v0.1.3...v0.1.4)
+
+- Add default options
+- Add tests for an inline case
+- Update loader to leave spaces for inline cases
+- Update package.json with a more precise project description
+
 ## [v0.1.3 - 2022-01-09](https://github.com/kudashevs/webpack-remove-code-blocks/compare/v0.1.2...v0.1.3)
 
 - Move the loader to the src folder
