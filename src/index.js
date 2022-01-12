@@ -30,7 +30,7 @@ function regexEscape(str) {
  * @returns {string}
  */
 function RemoveCodeBlocksLoader(content) {
-  const options = loaderUtils.getOptions(this) ?? defaultOptions;
+  const options = loaderUtils.getOptions(this) || defaultOptions;
 
   options.blocks.forEach(function (block) {
     if (typeof block === 'string') {
