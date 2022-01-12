@@ -2,8 +2,8 @@
 /* this comment should not be removed */
 module.exports = function addOne(num) {
     const one = 1;
-    /* develblock:start */
+    /* devblock:start */
     console.log('Adding one to the input');
-    /* develblock:end */
+    /* devblock:end */
     return num + one;
 }

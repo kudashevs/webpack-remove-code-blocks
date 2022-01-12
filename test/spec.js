@@ -63,11 +63,20 @@ module.exports = function addOne(num) {
     return num + one;
 }`;
 
+describe('basic case with no options', () => {
+  it('removes the appropriate block and leaves other code unchanged', async () => {
+    const stats = await testCompiler('fixtures/basic-case.js', {});
+    const output = stats.toJson({ source: true }).modules[0].source;
+
+    assert.equal(output, EXPECTED_OUTPUT_BASIC_CASE);
+  });
+});
+
 describe('basic case with a string parameter', () => {
   it('removes the appropriate block and leaves other code unchanged', async () => {
     const stats = await testCompiler('fixtures/basic-case.js', {
       options: {
-        blocks: ['develblock'],
+        blocks: ['devblock'],
       },
     });
     const output = stats.toJson({ source: true }).modules[0].source;
@@ -82,8 +91,8 @@ describe('basic case with an object parameter', () => {
       options: {
         blocks: [
           {
-            start: 'develblock:start',
-            end: 'develblock:end',
+            start: 'devblock:start',
+            end: 'devblock:end',
             prefix: '/*',
             suffix: '*/',
           },
