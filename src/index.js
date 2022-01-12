@@ -3,6 +3,17 @@
 
 const loaderUtils = require('loader-utils');
 
+const defaultOptions = {
+  blocks: [
+    {
+      start: 'devblock:start',
+      end: 'devblock:end',
+      prefix: '/*',
+      suffix: '*/',
+    },
+  ],
+};
+
 /**
  * @param {string} str
  */
@@ -19,7 +30,7 @@ function regexEscape(str) {
  * @returns {string}
  */
 function RemoveCodeBlocksLoader(content) {
-  const options = loaderUtils.getOptions(this);
+  const options = loaderUtils.getOptions(this) ?? defaultOptions;
   if (options && options.blocks) {
     options.blocks.forEach(function (block) {
       if (typeof block === 'string') {
