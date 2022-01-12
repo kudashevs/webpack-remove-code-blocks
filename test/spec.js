@@ -1,6 +1,26 @@
 const testCompiler = require('./test-compiler.js');
 const assert = require('assert');
 
+describe('different cases with different letter case', () => {
+  const testLoader = require('../src/index');
+  const assertions = [
+    {
+      input: `visible /* devblock:start */ will be removed /* devblock:end */`,
+      result: 'visible',
+    },
+    {
+      input: `visible /* DEVBLOCK:START */ won't be removed /* DEVBLOCK:END */`,
+      result: `visible /* DEVBLOCK:START */ won't be removed /* DEVBLOCK:END */`,
+    },
+  ];
+
+  assertions.forEach(({ input, result }) => {
+    it(`called with ${input} and should return expected`, () => {
+      assert.equal(testLoader.call({}, input), result);
+    });
+  });
+});
+
 const EXPECTED_OUTPUT_INLINE_CASE = `console.log('User was created ' + user.name + ' ' + user.age);`;
 
 describe('inline case with a string parameter', () => {
