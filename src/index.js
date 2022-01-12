@@ -41,13 +41,16 @@ function RemoveCodeBlocksLoader(content) {
         suffix: '*/',
       };
     }
+
     let prefix = block.prefix ? regexEscape(block.prefix) : '';
     let suffix = block.suffix ? regexEscape(block.suffix) : '';
+
     // prettier-ignore
     let regex = new RegExp(
       '[\\t ]*' + prefix + ' ?' + block.start + ' ?' + suffix + '[\\s\\S]*?' + prefix + ' ?' + block.end + ' ?' + suffix + '([\\t ]*\\n)?',
       'g'
     );
+
     content = content.replace(regex, '');
   });
 
