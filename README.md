@@ -8,7 +8,38 @@ for removing the code that you don't want to see in production. This loader supp
 
 The key difference form the original loader that the syntax is not limited by using `:start` and `:end` markers.
 
-## Example
+## Usage
+
+As a usage example let's look at the situation when we need to remove some code from a bundle. To do that we need to mark
+this code somehow, and the less painful way to do that is to use comments. So, in places where we need to remove the code
+from our js files let's add the comments with the specific syntax `devblock:start` and `devblock:end`:
+```javascript
+/* devblock:start */
+console.log('something not for production');
+/* devblock:end */
+```
+
+Then, we need to update our webpack configuration with the loader:
+
+```javascript
+module.exports = {
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components|\.spec\.js)/,
+                use: [
+                    {
+                        loader: 'webpack-remove-code-blocks',
+                    },
+                ],
+            },
+        ],
+    },
+};
+```
+
+After a bundling process this `console.log` code in the comments block will be removed (the comments will be removed too).
 
 As an example, in place where we need to omit some code in our js files we can add the comments with the following syntax:
 
