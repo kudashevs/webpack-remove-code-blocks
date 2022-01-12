@@ -2,6 +2,10 @@
 
 All Notable changes to ` webpack-remove-code-blocks` will be documented in this file
 
+## [v0.1.5 - 2022-01-12](https://github.com/kudashevs/webpack-remove-code-blocks/compare/v0.1.4...v0.1.5)
+
+- Fix coalescing operator incompatibility
+
 ## [v0.1.4 - 2022-01-12](https://github.com/kudashevs/webpack-remove-code-blocks/compare/v0.1.3...v0.1.4)
 
 - Add default options
