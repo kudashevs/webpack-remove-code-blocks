@@ -113,6 +113,27 @@ var makeFoo = function(bar, baz) {
 }
 ```
 
+## Options
+
+These are some moments that are worth knowing about options. The options must include the `blocks` array.
+This array includes information about all comment blocks that we want to remove. Each block could be represented
+by a string or by an object with the following fields:
+```
+prefix: '/*',                   # a string value which denotes the start of a comment
+suffix: '*/',                   # a string value which denotes the end of a comment
+start: 'dev_start',             # a string value which denotes a comment content for the block start
+end: 'dev_end',                 # a string value which denotes a comment content for the block end
+```
+
+However, if you don't want to type all this stuff you can use a string value, which will be converted to the block option.
+For example, the string `block` will be converted into the object with the following fields:
+```
+prefix: '/*',
+suffix: '*/',
+start: 'block:start',
+end: 'block:end',
+```
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
