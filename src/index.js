@@ -26,7 +26,7 @@ function RemoveCodeBlocksLoader(content) {
       let suffix = block.suffix ? regexEscape(block.suffix) : '';
       // prettier-ignore
       let regex = new RegExp(
-          '[\\t ]*' + prefix + ' ?' + block.start + ' ?' + suffix + '[\\s\\S]*?' + prefix + ' ?' + block.end + ' ?' + suffix + '[\\t ]*\\n?',
+          '[\\t ]*' + prefix + ' ?' + block.start + ' ?' + suffix + '[\\s\\S]*?' + prefix + ' ?' + block.end + ' ?' + suffix + '([\\t ]*\\n)?',
           'g'
       );
       content = content.replace(regex, '');
