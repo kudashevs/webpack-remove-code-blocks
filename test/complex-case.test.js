@@ -1,4 +1,4 @@
-const testCompiler = require('./test-compiler.js');
+const compiler = require('./test-compiler.js');
 const assert = require('assert');
 
 describe('test suite for the complex case', () => {
@@ -15,7 +15,7 @@ app.post('/update/:id', async (req, res) => {
 
   describe('a complex case with a string parameter and an object parameter at the same time', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
-      const stats = await testCompiler('fixtures/complex-case.js', {
+      const stats = await compiler('fixtures/complex-case.js', {
         options: {
           blocks: [
             'info',
