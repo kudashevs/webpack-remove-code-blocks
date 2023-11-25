@@ -1,4 +1,4 @@
-const testCompiler = require('./test-compiler.js');
+const compiler = require('./test-compiler.js');
 const assert = require('assert');
 
 describe('test suite for the compound case', () => {
@@ -13,7 +13,7 @@ var makeFoo = function(bar, baz) {
 
   describe('a compound case from the README.md file', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
-      const stats = await testCompiler('fixtures/compound-case', {
+      const stats = await compiler('fixtures/compound-case', {
         options: {
           blocks: [
             'debug',
