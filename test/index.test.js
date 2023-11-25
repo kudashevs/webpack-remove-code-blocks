@@ -1,6 +1,6 @@
 const assert = require('assert');
 
-describe('a default test suite', () => {
+describe('default test suite', () => {
   const loader = require('../src/index');
 
   it('can remove a block of code marked in the lower case', () => {
