@@ -11,7 +11,7 @@ describe('test suite for the inline case', () => {
           blocks: ['dev'],
         },
       });
-      const output = stats.toJson({ source: true }).modules[0].source;
+      const output = stats.toJson().modules[0].source;
 
       assert.equal(output, EXPECTED_OUTPUT_INLINE_CASE);
     });
@@ -31,7 +31,7 @@ describe('test suite for the inline case', () => {
           ],
         },
       });
-      const output = stats.toJson({ source: true }).modules[0].source;
+      const output = stats.toJson().modules[0].source;
 
       assert.equal(output, EXPECTED_OUTPUT_INLINE_CASE);
     });
