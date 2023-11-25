@@ -1,8 +1,8 @@
-const testCompiler = require("./test-compiler.js");
-const assert = require("assert");
+const testCompiler = require('./test-compiler.js');
+const assert = require('assert');
 
-describe('a complex case with a string parameter and an object parameter', () => {
-    const EXPECTED_OUTPUT_COMPLEX_CASE = `
+describe('test suite for the complex case', () => {
+  const EXPECTED_OUTPUT_COMPLEX_CASE = `
 /* this comment should not be removed */
 app.post('/update/:id', async (req, res) => {
     const id = req.params.id;
@@ -13,23 +13,24 @@ app.post('/update/:id', async (req, res) => {
     res.send('Record Updated')
 })`;
 
-    it('removes the appropriate block and leaves other code unchanged', async () => {
-        const stats = await testCompiler('fixtures/complex-case.js', {
-            options: {
-                blocks: [
-                    'info',
-                    {
-                        start: 'stage_only_start',
-                        end: 'stage_only_stop',
-                        prefix: '/*',
-                        suffix: '*/',
-                    },
-                ],
+  describe('a complex case with a string parameter and an object parameter at the same time', () => {
+    it('can remove the marked block and leave other code unchanged', async () => {
+      const stats = await testCompiler('fixtures/complex-case.js', {
+        options: {
+          blocks: [
+            'info',
+            {
+              start: 'stage_only_start',
+              end: 'stage_only_stop',
+              prefix: '/*',
+              suffix: '*/',
             },
-        });
-        const output = stats.toJson({ source: true }).modules[0].source;
+          ],
+        },
+      });
+      const output = stats.toJson({ source: true }).modules[0].source;
 
-        assert.equal(output, EXPECTED_OUTPUT_COMPLEX_CASE);
+      assert.equal(output, EXPECTED_OUTPUT_COMPLEX_CASE);
     });
+  });
 });
-
