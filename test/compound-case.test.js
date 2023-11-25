@@ -2,7 +2,7 @@ const compiler = require('./test-compiler.js');
 const assert = require('assert');
 
 describe('test suite for the compound case', () => {
-  const EXPECTED_OUTPUT_COMPOUND_CASE = `
+  const EXPECTED_OUTPUT = `
 var makeFoo = function(bar, baz) {
     // The following code will be removed with the loader
 
@@ -29,7 +29,7 @@ var makeFoo = function(bar, baz) {
       });
       const output = stats.toJson().modules[0].source;
 
-      assert.equal(output, EXPECTED_OUTPUT_COMPOUND_CASE);
+      assert.equal(output, EXPECTED_OUTPUT);
     });
   });
 });
