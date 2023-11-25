@@ -1,4 +1,4 @@
-const testCompiler = require('./test-compiler.js');
+const compiler = require('./test-compiler.js');
 const assert = require('assert');
 
 describe('test suite for the inline case', () => {
@@ -6,7 +6,7 @@ describe('test suite for the inline case', () => {
 
   describe('an inline case with a string parameter', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
-      const stats = await testCompiler('fixtures/inline-case.js', {
+      const stats = await compiler('fixtures/inline-case.js', {
         options: {
           blocks: ['dev'],
         },
@@ -19,7 +19,7 @@ describe('test suite for the inline case', () => {
 
   describe('an inline case with an object parameter', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
-      const stats = await testCompiler('fixtures/inline-case.js', {
+      const stats = await compiler('fixtures/inline-case.js', {
         options: {
           blocks: [
             {
