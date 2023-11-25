@@ -3,13 +3,16 @@
 
 const loaderUtils = require('loader-utils');
 
+const COMMENT_START = '/*';
+const COMMENT_END = '*/';
+
 const defaultOptions = {
   blocks: [
     {
       start: 'devblock:start',
       end: 'devblock:end',
-      prefix: '/*',
-      suffix: '*/',
+      prefix: COMMENT_START,
+      suffix: COMMENT_END,
     },
   ],
 };
@@ -33,8 +36,8 @@ function convertToOption(label) {
   return {
     start: `${label}:start`,
     end: `${label}:end`,
-    prefix: '/*',
-    suffix: '*/',
+    prefix: COMMENT_START,
+    suffix: COMMENT_END,
   };
 }
 
