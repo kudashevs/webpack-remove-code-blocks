@@ -1,4 +1,4 @@
-const testCompiler = require('./test-compiler.js');
+const compiler = require('./test-compiler.js');
 const assert = require('assert');
 
 describe('a test suite for the simple/basic case', () => {
@@ -11,7 +11,7 @@ module.exports = function addOne(num) {
 
   describe('a basic case used with no options', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
-      const stats = await testCompiler('fixtures/basic-case.js', {});
+      const stats = await compiler('fixtures/basic-case.js', {});
       const output = stats.toJson({ source: true }).modules[0].source;
 
       assert.equal(output, EXPECTED_OUTPUT_BASIC_CASE);
@@ -20,7 +20,7 @@ module.exports = function addOne(num) {
 
   describe('a basic case used with a string parameter', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
-      const stats = await testCompiler('fixtures/basic-case.js', {
+      const stats = await compiler('fixtures/basic-case.js', {
         options: {
           blocks: ['devblock'],
         },
@@ -33,7 +33,7 @@ module.exports = function addOne(num) {
 
   describe('a basic case used with an object parameter', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
-      const stats = await testCompiler('fixtures/basic-case.js', {
+      const stats = await compiler('fixtures/basic-case.js', {
         options: {
           blocks: [
             {
