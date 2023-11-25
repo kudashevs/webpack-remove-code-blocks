@@ -12,7 +12,7 @@ module.exports = function addOne(num) {
   describe('a basic case used with no options', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
       const stats = await compiler('fixtures/basic-case.js', {});
-      const output = stats.toJson().modules[0].source;
+      const output = stats.toJson({ source: true }).modules[0].source;
 
       assert.equal(output, EXPECTED_OUTPUT);
     });
@@ -25,7 +25,7 @@ module.exports = function addOne(num) {
           blocks: ['devblock'],
         },
       });
-      const output = stats.toJson().modules[0].source;
+      const output = stats.toJson({ source: true }).modules[0].source;
 
       assert.equal(output, EXPECTED_OUTPUT);
     });
@@ -45,7 +45,7 @@ module.exports = function addOne(num) {
           ],
         },
       });
-      const output = stats.toJson().modules[0].source;
+      const output = stats.toJson({ source: true }).modules[0].source;
 
       assert.equal(output, EXPECTED_OUTPUT);
     });
