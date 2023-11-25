@@ -16,8 +16,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [ 12.x, 14.x, 16.x, 17.x ]
-        webpack-version: [ 3, 4, 5 ]
+        node-version: [12.x, 14.x, 16.x, 17.x]
+        webpack-version: [3, 4, 5]
 
     steps:
       - uses: actions/checkout@v2
