@@ -2,7 +2,7 @@ const compiler = require('./test-compiler.js');
 const assert = require('assert');
 
 describe('test suite for the inline case', () => {
-  const EXPECTED_OUTPUT_INLINE_CASE = `console.log('User was created ' + user.name + ' ' + user.age);`;
+  const EXPECTED_OUTPUT = `console.log('User was created ' + user.name + ' ' + user.age);`;
 
   describe('an inline case with a string parameter', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
@@ -13,7 +13,7 @@ describe('test suite for the inline case', () => {
       });
       const output = stats.toJson().modules[0].source;
 
-      assert.equal(output, EXPECTED_OUTPUT_INLINE_CASE);
+      assert.equal(output, EXPECTED_OUTPUT);
     });
   });
 
@@ -33,7 +33,7 @@ describe('test suite for the inline case', () => {
       });
       const output = stats.toJson().modules[0].source;
 
-      assert.equal(output, EXPECTED_OUTPUT_INLINE_CASE);
+      assert.equal(output, EXPECTED_OUTPUT);
     });
   });
 });
