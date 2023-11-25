@@ -21,9 +21,6 @@ module.exports = function testCompiler(fixture, options = {}) {
         },
       ],
     },
-    stats: {
-      source: true,
-    },
   });
 
   compiler.outputFileSystem = createFsFromVolume(new Volume());
