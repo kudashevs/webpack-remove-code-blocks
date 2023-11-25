@@ -1,21 +1,19 @@
 const assert = require('assert');
 
-describe('a test case with different letter cases', () => {
+describe('a default test suite', () => {
   const testLoader = require('../src/index');
-  const assertions = [
-    {
-      input: `visible /* devblock:start */ will be removed /* devblock:end */`,
-      result: 'visible',
-    },
-    {
-      input: `visible /* DEVBLOCK:START */ won't be removed /* DEVBLOCK:END */`,
-      result: `visible /* DEVBLOCK:START */ won't be removed /* DEVBLOCK:END */`,
-    },
-  ];
 
-  assertions.forEach(({ input, result }) => {
-    it(`called with ${input} and should return expected`, () => {
-      assert.equal(testLoader.call({}, input), result);
-    });
-  });
+  it('can remove a block of code marked in the lower case', () => {
+    let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
+    let expected = 'visible';
+
+    assert.equal(testLoader.call({}, input), expected);
+  })
+
+  it('cannot remove a block of code marked in the upper case', () => {
+    let input = 'visible /* DEVBLOCK:START */ won\'t be removed /* DEVBLOCK:END */';
+    let expected = 'visible /* DEVBLOCK:START */ won\'t be removed /* DEVBLOCK:END */';
+
+    assert.equal(testLoader.call({}, input), expected);
+  })
 });
