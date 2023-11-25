@@ -3,16 +3,17 @@
 
 const loaderUtils = require('loader-utils');
 
-const COMMENT_START = '/*';
-const COMMENT_END = '*/';
+const DEFAULT_LABEL = 'devblock';
 const BLOCK_START = 'start';
 const BLOCK_END = 'end';
+const COMMENT_START = '/*';
+const COMMENT_END = '*/';
 
 const defaultOptions = {
   blocks: [
     {
-      start: `devblock:${BLOCK_START}`,
-      end: `devblock:${BLOCK_END}`,
+      start: `${DEFAULT_LABEL}:${BLOCK_START}`,
+      end: `${DEFAULT_LABEL}:${BLOCK_END}`,
       prefix: COMMENT_START,
       suffix: COMMENT_END,
     },
