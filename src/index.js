@@ -25,6 +25,20 @@ function regexEscape(str) {
 }
 
 /**
+ * @param {string} label
+ *
+ * @return {object}
+ */
+function convertToOption(label) {
+  return {
+    start: `${label}:start`,
+    end: `${label}:end`,
+    prefix: '/*',
+    suffix: '*/',
+  };
+}
+
+/**
  * @param {string} content
  *
  * @return {string}
@@ -34,12 +48,7 @@ function RemoveCodeBlocksLoader(content) {
 
   options.blocks.forEach(function (block) {
     if (typeof block === 'string') {
-      block = {
-        start: block + ':start',
-        end: block + ':end',
-        prefix: '/*',
-        suffix: '*/',
-      };
+      block = convertToOption(block);
     }
 
     let prefix = block.prefix ? regexEscape(block.prefix) : '';
