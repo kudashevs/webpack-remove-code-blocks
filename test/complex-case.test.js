@@ -2,7 +2,7 @@ const compiler = require('./test-compiler.js');
 const assert = require('assert');
 
 describe('test suite for the complex case', () => {
-  const EXPECTED_OUTPUT_COMPLEX_CASE = `
+  const EXPECTED_OUTPUT = `
 /* this comment should not be removed */
 app.post('/update/:id', async (req, res) => {
     const id = req.params.id;
@@ -30,7 +30,7 @@ app.post('/update/:id', async (req, res) => {
       });
       const output = stats.toJson().modules[0].source;
 
-      assert.equal(output, EXPECTED_OUTPUT_COMPLEX_CASE);
+      assert.equal(output, EXPECTED_OUTPUT);
     });
   });
 });
