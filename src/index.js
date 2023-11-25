@@ -5,12 +5,14 @@ const loaderUtils = require('loader-utils');
 
 const COMMENT_START = '/*';
 const COMMENT_END = '*/';
+const BLOCK_START = 'start';
+const BLOCK_END = 'end';
 
 const defaultOptions = {
   blocks: [
     {
-      start: 'devblock:start',
-      end: 'devblock:end',
+      start: `devblock:${BLOCK_START}`,
+      end: `devblock:${BLOCK_END}`,
       prefix: COMMENT_START,
       suffix: COMMENT_END,
     },
@@ -34,8 +36,8 @@ function regexEscape(str) {
  */
 function convertToOption(label) {
   return {
-    start: `${label}:start`,
-    end: `${label}:end`,
+    start: `${label}:${BLOCK_START}`,
+    end: `${label}:${BLOCK_END}`,
     prefix: COMMENT_START,
     suffix: COMMENT_END,
   };
