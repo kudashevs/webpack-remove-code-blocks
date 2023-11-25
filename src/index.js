@@ -27,7 +27,7 @@ function regexEscape(str) {
 /**
  * @param {string} content
  *
- * @returns {string}
+ * @return {string}
  */
 function RemoveCodeBlocksLoader(content) {
   const options = loaderUtils.getOptions(this) || defaultOptions;
