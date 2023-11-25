@@ -28,7 +28,7 @@ app.post('/update/:id', async (req, res) => {
           ],
         },
       });
-      const output = stats.toJson({ source: true }).modules[0].source;
+      const output = stats.toJson().modules[0].source;
 
       assert.equal(output, EXPECTED_OUTPUT_COMPLEX_CASE);
     });
