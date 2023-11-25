@@ -27,7 +27,7 @@ var makeFoo = function(bar, baz) {
           ],
         },
       });
-      const output = stats.toJson({ source: true }).modules[0].source;
+      const output = stats.toJson().modules[0].source;
 
       assert.equal(output, EXPECTED_OUTPUT_COMPOUND_CASE);
     });
