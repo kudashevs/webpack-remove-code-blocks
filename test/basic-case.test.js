@@ -1,7 +1,7 @@
 const compiler = require('./test-compiler.js');
 const assert = require('assert');
 
-describe('a test suite for the simple/basic case', () => {
+describe('test suite for the simple/basic case', () => {
   const EXPECTED_OUTPUT_BASIC_CASE = `
 /* this comment should not be removed */
 module.exports = function addOne(num) {
