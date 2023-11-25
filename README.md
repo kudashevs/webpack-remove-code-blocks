@@ -20,7 +20,6 @@ console.log('something not for production');
 ```
 
 Then, we need to update our webpack configuration with the loader:
-
 ```javascript
 module.exports = {
     module: {
@@ -70,7 +69,6 @@ var makeFoo = function(bar, baz) {
 ```
 
 Then, we need to update our webpack configuration with the specific options and the loader:
-
 ```javascript
 module.exports = {
     module: {
@@ -102,7 +100,6 @@ module.exports = {
 ```
 
 After a bundling process we will get the following result:
-
 ```javascript
 var makeFoo = function(bar, baz) {
     // The following code will be removed with the loader
