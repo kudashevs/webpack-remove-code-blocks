@@ -41,47 +41,24 @@ console.log('something not for production');
 
 After the bundling process, the marked blocks will be removed (the comments will be removed too).
 
-## Advanced usage
+## Advanced usage example
 
-Let's suppose, that we have a more sophisticated case, which includes lots of blocks to be removed. That is not a problem.
-The only thing we need to do is to update the webpack configuration with the specific options.
+Let's suppose, that we have a more sophisticated task. We want to use different labels (we might want to keep some code
+in staging, but not in the production environment) and process different file extensions. That's not a problem.
 
-```javascript
-/* debug:start */
-console.log('debug');
-/* debug:end */
-var makeFoo = function(bar, baz) {
-    // The following code will be removed with the loader
-    /* devblock:start */
-    if (bar instanceof Bar !== true) {
-        throw new Error('makeFoo: bar param is required and must be instance of Bar');
-    }
-    /* devblock:end */
-
-    /* devblock_start */
-    if (baz instanceof Baz !== true) {
-        throw new Error('makeFoo: baz param is required and must be instance of Baz');
-    }
-    /* devblock_end */
-
-    // This code will remain
-    return new Foo(bar, baz);
-}
-```
-
-Then, we need to update our webpack configuration with the specific options and the loader:
+The only thing we need to do is to provide some additional settings to our webpack configuration:
 ```javascript
 module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
-                exclude: /(node_modules|bower_components|\.spec\.js)/,
+                test: /\.js|\.ts|\.tsx$/,                                   // files we want to procces
+                exclude: /(node_modules|bower_components|\.spec\.js)/,      // files we want to exclude
                 use: [
                     {
-                        loader: 'webpack-remove-code-blocks',
+                        loader: 'webpack-remove-code-blocks',               // use the loader
                         options: {
-                            blocks: [
+                            blocks: [                                       // define three different blocks
                                 'debug',
                                 'devblock',
                                 {
@@ -100,11 +77,33 @@ module.exports = {
 };
 ```
 
-After a bundling process we will get the following result:
+Let's now build our project with this code inside:
+```javascript
+/* debug:start */
+console.log('debug');
+/* debug:end */
+var makeFoo = function(bar, baz) {
+    // The following code will be removed with the loader
+    /* devblock:start */
+    if (bar instanceof Bar !== true) {
+        throw new Error('makeFoo: bar param is required and must be instance of Bar');
+    }
+    /* devblock:end */
+    /* devblock_start */
+    if (baz instanceof Baz !== true) {
+        throw new Error('makeFoo: baz param is required and must be instance of Baz');
+    }
+    /* devblock_end */
+
+    // This code will remain
+    return new Foo(bar, baz);
+}
+```
+
+After the bundling process, the result will be as follows:
 ```javascript
 var makeFoo = function(bar, baz) {
     // The following code will be removed with the loader
-
 
     // This code will remain
     return new Foo(bar, baz);
