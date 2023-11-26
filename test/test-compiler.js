@@ -31,6 +31,7 @@ module.exports = function testCompiler(fixture, options = {}) {
       if (err) {
         return reject(err);
       }
+
       if (stats.hasErrors()) {
         return reject(new Error(stats.toJson().errors));
       }
