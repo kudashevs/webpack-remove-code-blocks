@@ -8,28 +8,22 @@ the build process to remove the code that you don't want to see in production. T
 
 The key difference from the original loader is that the syntax is not limited only with `:start` and `:end` markers.
 
-## Usage
+## Usage example
 
-As a usage example let's look at the situation when we need to remove some code from a bundle. To do that we need to mark
-this code somehow, and the less painful way to do that is to use comments. So, in places where we need to remove the code
-from our js files let's add the comments with the specific syntax `devblock:start` and `devblock:end`:
-```javascript
-/* devblock:start */
-console.log('something not for production');
-/* devblock:end */
-```
+Let's start with a simple usage example. For example, we want to remove some code from a bundle while we build a project.
+To do that, we need to take a few simple steps.
 
-Then, we need to update our webpack configuration with the loader:
+Firstly, we need to add the loader and some additional settings to our webpack configuration: 
 ```javascript
 module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
-                exclude: /(node_modules|bower_components|\.spec\.js)/,
+                test: /\.js$/,                                              // files we want to procces
+                exclude: /(node_modules|bower_components|\.spec\.js)/,      // files we want to exclude
                 use: [
                     {
-                        loader: 'webpack-remove-code-blocks',
+                        loader: 'webpack-remove-code-blocks',               // use the loader
                     },
                 ],
             },
@@ -38,7 +32,14 @@ module.exports = {
 };
 ```
 
-After a bundling process this `console.log` code in the comments block will be removed (the comments will be removed too).
+Then, we can mark unwanted blocks of code in our `.js` files using comments with the special syntax `devblock:start` and `devblock:end`:
+```javascript
+/* devblock:start */
+console.log('something not for production');
+/* devblock:end */
+```
+
+After the bundling process, the marked blocks will be removed (the comments will be removed too).
 
 ## Advanced usage
 
