@@ -3,7 +3,7 @@ Webpack Remove Code Blocks ![test workflow](https://github.com/kudashevs/webpack
 
 This Webpack Remove Code Blocks package was originated from [Webpack Remove Block](https://github.com/ee01/webpack-remove-blocks). 
 
-This is a webpack loader that can remove blocks of code marked with special tags in comments. It can be incorporated into
+This is a webpack loader that can remove blocks of code marked with special labels in comments. It can be incorporated into
 the build process to remove the code that you don't want to see in production. The loader supports multiple block types.
 
 The key difference from the original loader is that the syntax is not limited only with `:start` and `:end` markers.
