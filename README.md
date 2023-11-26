@@ -112,23 +112,22 @@ var makeFoo = function(bar, baz) {
 
 ## Options
 
-These are some moments that are worth knowing about options. The options must include the `blocks` array.
-This array includes information about all comment blocks that we want to remove. Each block could be represented
-by a string or by an object with the following fields:
+If you want to define different comment blocks, use the `options.blocks` array. Each element of the array describes a unique
+block of comments to be removed. The block can be described by an object with the following properties:
 ```
-prefix: '/*',                   # a string value which denotes the start of a comment
-suffix: '*/',                   # a string value which denotes the end of a comment
-start: 'dev_start',             # a string value which denotes a comment content for the block start
-end: 'dev_end',                 # a string value which denotes a comment content for the block end
+start: 'dev_start',             # a string value that defines the beginning of a block to remove
+end: 'dev_end',                 # a string value that defines the end of a block to remove
+prefix: '/*',                   # a string value that defines the beginning of a comment
+suffix: '*/',                   # a string value that defines the end of a comment
 ```
 
-However, if you don't want to type all this stuff you can use a string value, which will be converted to the block option.
-For example, the string `block` will be converted into the object with the following fields:
+Or, if you don't want to clutter your configuration, a block can be described by just a simple string. The string `debug`
+will represent a block of comments with the following properties:
 ```
+start: 'debug:start',
+end: 'debug:end',
 prefix: '/*',
 suffix: '*/',
-start: 'block:start',
-end: 'block:end',
 ```
 
 ## License
