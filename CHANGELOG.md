@@ -2,6 +2,13 @@
 
 All Notable changes to ` webpack-remove-code-blocks` will be documented in this file
 
+## [v0.1.6 - 2023-11-26](https://github.com/kudashevs/webpack-remove-code-blocks/compare/v0.1.5...v0.1.6)
+
+- Add support for Node.js 18, 20, 21
+- Update and restructure tests
+- Update README.md
+- Massive refactoring
+
 ## [v0.1.5 - 2022-01-12](https://github.com/kudashevs/webpack-remove-code-blocks/compare/v0.1.4...v0.1.5)
 
 - Fix coalescing operator incompatibility
