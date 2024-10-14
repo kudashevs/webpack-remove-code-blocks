@@ -3,6 +3,7 @@
 
 const loaderUtils = require('loader-utils');
 
+const EXCLUDE_MODES = ['development'];
 const DEFAULT_LABEL = 'devblock';
 const BLOCK_START = 'start';
 const BLOCK_END = 'end';
@@ -43,6 +44,10 @@ function regexEscape(str) {
  * @return {string}
  */
 function RemoveCodeBlocksLoader(content) {
+  if (shouldSkip(process.env.NODE_ENV)) {
+    return content;
+  }
+
   const options = loaderUtils.getOptions(this) || defaultOptions;
 
   options.blocks.forEach(function (block) {
@@ -67,6 +72,15 @@ function RemoveCodeBlocksLoader(content) {
   }
 
   return content;
+}
+
+/**
+ * @param {string} mode
+ *
+ * @return {boolean}
+ */
+function shouldSkip(mode) {
+  return EXCLUDE_MODES.includes(mode);
 }
 
 module.exports = RemoveCodeBlocksLoader;
