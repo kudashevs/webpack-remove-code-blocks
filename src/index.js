@@ -35,7 +35,7 @@ function regexEscape(str) {
  *
  * @return {object}
  */
-function convertToOption(label) {
+function generateDefaultOptions(label) {
   return {
     start: `${label}:${BLOCK_START}`,
     end: `${label}:${BLOCK_END}`,
@@ -54,7 +54,7 @@ function RemoveCodeBlocksLoader(content) {
 
   options.blocks.forEach(function (block) {
     if (typeof block === 'string') {
-      block = convertToOption(block);
+      block = generateDefaultOptions(block);
     }
 
     let prefix = block.prefix ? regexEscape(block.prefix) : '';
