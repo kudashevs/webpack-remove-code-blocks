@@ -9,20 +9,6 @@ const BLOCK_END = 'end';
 const COMMENT_START = '/*';
 const COMMENT_END = '*/';
 
-const defaultOptions = {
-  blocks: [generateDefaultOptions(DEFAULT_LABEL)],
-};
-
-/**
- * @param {string} str
- */
-function regexEscape(str) {
-  return str.replace(
-    /([\^|\$|\.|\*|\+|\?|\=|\!|\:|\\|\/|\(|\)|\[|\]|\{|\}])/gi,
-    '\\$1'
-  );
-}
-
 /**
  * @param {string} label
  *
@@ -35,6 +21,20 @@ function generateDefaultOptions(label) {
     prefix: COMMENT_START,
     suffix: COMMENT_END,
   };
+}
+
+const defaultOptions = {
+  blocks: [generateDefaultOptions(DEFAULT_LABEL)],
+};
+
+/**
+ * @param {string} str
+ */
+function regexEscape(str) {
+  return str.replace(
+    /([\^|\$|\.|\*|\+|\?|\=|\!|\:|\\|\/|\(|\)|\[|\]|\{|\}])/gi,
+    '\\$1'
+  );
 }
 
 /**
