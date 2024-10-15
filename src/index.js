@@ -10,6 +10,10 @@ const BLOCK_END = 'end';
 const COMMENT_START = '/*';
 const COMMENT_END = '*/';
 
+const defaultOptions = {
+  blocks: [generateDefaultOptions(DEFAULT_LABEL)],
+};
+
 /**
  * @param {string} label
  *
@@ -23,10 +27,6 @@ function generateDefaultOptions(label) {
     suffix: COMMENT_END,
   };
 }
-
-const defaultOptions = {
-  blocks: [generateDefaultOptions(DEFAULT_LABEL)],
-};
 
 /**
  * @param {string} str
