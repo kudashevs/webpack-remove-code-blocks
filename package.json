@@ -37,14 +37,27 @@
     "loader-utils": "^1.1.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^29.7.0",
     "memfs": "^3.4.1",
-    "mocha": "^7.1.1",
     "prettier": "^2.5.1",
     "webpack": "^4.46.0"
   },
   "scripts": {
-    "test": "mocha",
+    "test": "cross-env NODE_ENV=test jest --colors",
     "format": "prettier --write \"**/*.+(js|json)\" --"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "roots": [
+      "<rootDir>/test"
+    ],
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text",
+      "html"
+    ]
   },
   "bugs": {
     "url": "https://github.com/kudashevs/webpack-remove-code-blocks/issues"

@@ -1,9 +1,7 @@
 const compiler = require('./test-compiler.js');
-const assert = require('assert');
 
 describe('test suite for the simple/basic case', () => {
-  const EXPECTED_OUTPUT = `
-/* this comment should not be removed */
+  const EXPECTED_OUTPUT = `/* this comment should not be removed */
 module.exports = function addOne(num) {
     const one = 1;
     return num + one;
@@ -14,7 +12,7 @@ module.exports = function addOne(num) {
       const stats = await compiler('fixtures/basic-case.js', {});
       const output = stats.toJson({ source: true }).modules[0].source;
 
-      assert.equal(output, EXPECTED_OUTPUT);
+      expect(output).toBe(EXPECTED_OUTPUT);
     });
   });
 
@@ -27,7 +25,7 @@ module.exports = function addOne(num) {
       });
       const output = stats.toJson({ source: true }).modules[0].source;
 
-      assert.equal(output, EXPECTED_OUTPUT);
+      expect(output).toBe(EXPECTED_OUTPUT);
     });
   });
 
@@ -47,7 +45,7 @@ module.exports = function addOne(num) {
       });
       const output = stats.toJson({ source: true }).modules[0].source;
 
-      assert.equal(output, EXPECTED_OUTPUT);
+      expect(output).toBe(EXPECTED_OUTPUT);
     });
   });
 });

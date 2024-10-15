@@ -1,5 +1,4 @@
 const compiler = require('./test-compiler.js');
-const assert = require('assert');
 
 describe('test suite for the compound case', () => {
   const EXPECTED_OUTPUT = `
@@ -29,7 +28,7 @@ var makeFoo = function(bar, baz) {
       });
       const output = stats.toJson({ source: true }).modules[0].source;
 
-      assert.equal(output, EXPECTED_OUTPUT);
+      expect(output).toBe(EXPECTED_OUTPUT);
     });
   });
 });

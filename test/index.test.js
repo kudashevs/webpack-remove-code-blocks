@@ -1,5 +1,3 @@
-const assert = require('assert');
-
 describe('default test suite', () => {
   const loader = require('../src/index');
   const originalMode = process.env.NODE_ENV;
@@ -10,7 +8,20 @@ describe('default test suite', () => {
     let input = '/* devblock:start */ visible /* devblock:end */';
     let expected = '';
 
-    assert.equal(loader.call({}, input), expected);
+    expect(process.env.NODE_ENV).toBe('production');
+    expect(loader.call({}, input)).toBe(expected);
+
+    process.env.NODE_ENV = originalMode;
+  });
+
+  it('can proceed in test environment', () => {
+    process.env.NODE_ENV = 'test';
+
+    let input = '/* devblock:start */ visible /* devblock:end */';
+    let expected = '';
+
+    expect(process.env.NODE_ENV).toBe('test');
+    expect(loader.call({}, input)).toBe(expected);
 
     process.env.NODE_ENV = originalMode;
   });
@@ -21,7 +32,8 @@ describe('default test suite', () => {
     let input = '/* devblock:start */ visible /* devblock:end */';
     let expected = '/* devblock:start */ visible /* devblock:end */';
 
-    assert.equal(loader.call({}, input), expected);
+    expect(process.env.NODE_ENV).toBe('development');
+    expect(loader.call({}, input)).toBe(expected);
 
     process.env.NODE_ENV = originalMode;
   });
@@ -30,13 +42,13 @@ describe('default test suite', () => {
     let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
     let expected = 'visible';
 
-    assert.equal(loader.call({}, input), expected);
-  })
+    expect(loader.call({}, input)).toBe(expected);
+  });
 
   it('cannot remove a block of code marked in the upper case', () => {
     let input = 'visible /* DEVBLOCK:START */ won\'t be removed /* DEVBLOCK:END */';
     let expected = 'visible /* DEVBLOCK:START */ won\'t be removed /* DEVBLOCK:END */';
 
-    assert.equal(loader.call({}, input), expected);
-  })
+    expect(loader.call({}, input)).toBe(expected);
+  });
 });

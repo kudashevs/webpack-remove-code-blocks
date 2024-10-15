@@ -1,9 +1,7 @@
 const compiler = require('./test-compiler.js');
-const assert = require('assert');
 
 describe('test suite for the complex case', () => {
-  const EXPECTED_OUTPUT = `
-/* this comment should not be removed */
+  const EXPECTED_OUTPUT = `/* this comment should not be removed */
 app.post('/update/:id', async (req, res) => {
     const id = req.params.id;
     const record = await repo.update(id, req.body);
@@ -30,7 +28,7 @@ app.post('/update/:id', async (req, res) => {
       });
       const output = stats.toJson({ source: true }).modules[0].source;
 
-      assert.equal(output, EXPECTED_OUTPUT);
+      expect(output).toBe(EXPECTED_OUTPUT);
     });
   });
 });
