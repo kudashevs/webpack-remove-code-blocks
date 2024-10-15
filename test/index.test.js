@@ -4,7 +4,7 @@ describe('default test suite', () => {
   const loader = require('../src/index');
   const originalMode = process.env.NODE_ENV;
 
-  it('can proceed on production environment', () => {
+  it('can proceed in production environment', () => {
     process.env.NODE_ENV = 'production';
 
     let input = '/* devblock:start */ visible /* devblock:end */';
@@ -15,7 +15,7 @@ describe('default test suite', () => {
     process.env.NODE_ENV = originalMode;
   });
 
-  it('can skip on development environment', () => {
+  it('can skip in development environment', () => {
     process.env.NODE_ENV = 'development';
 
     let input = '/* devblock:start */ visible /* devblock:end */';
