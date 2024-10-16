@@ -1,4 +1,4 @@
-const compiler = require('./test-compiler.js');
+const compiler = require('./helpers/test-compiler.js');
 
 describe('test suite for the complex case', () => {
   const EXPECTED_OUTPUT = `/* this comment should not be removed */

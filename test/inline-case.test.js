@@ -1,4 +1,4 @@
-const compiler = require('./test-compiler.js');
+const compiler = require('./helpers/test-compiler.js');
 
 describe('test suite for the inline case', () => {
   const EXPECTED_OUTPUT = `console.log('User was created ' + user.name + ' ' + user.age);`;

@@ -4,8 +4,8 @@ const { createFsFromVolume, Volume } = require('memfs');
 
 module.exports = function testCompiler(fixture, options = {}) {
   const compiler = webpack({
-    context: __dirname,
-    entry: `./${fixture}`,
+    context: path.resolve(__dirname, '..'),
+    entry: path.resolve(__dirname, `../${fixture}`),
     output: {
       path: path.resolve(__dirname),
       filename: 'bundle.js',
@@ -15,7 +15,7 @@ module.exports = function testCompiler(fixture, options = {}) {
         {
           test: /\.js$/,
           use: {
-            loader: path.resolve(__dirname, '../src/index.js'),
+            loader: path.resolve(__dirname, '../../src/index.js'),
             ...options,
           },
         },
