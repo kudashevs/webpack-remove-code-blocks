@@ -1,4 +1,4 @@
-const compiler = require('./helpers/test-compiler.js');
+const compiler = require('./helpers/compiler.js');
 
 describe('test suite for the compound case', () => {
   const EXPECTED_OUTPUT = `
