@@ -9,7 +9,7 @@ module.exports = function addOne(num) {
 
   describe('a basic case used with no options', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
-      const stats = await compiler('basic-case', {});
+      const stats = await compiler('multi-line-basic', {});
       const output = stats.toJson({ source: true }).modules[0].source;
 
       expect(output).toBe(EXPECTED_OUTPUT);
@@ -18,7 +18,7 @@ module.exports = function addOne(num) {
 
   describe('a basic case used with a string parameter', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
-      const stats = await compiler('basic-case', {
+      const stats = await compiler('multi-line-basic', {
         options: {
           blocks: ['devblock'],
         },
@@ -31,7 +31,7 @@ module.exports = function addOne(num) {
 
   describe('a basic case used with an object parameter', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
-      const stats = await compiler('basic-case', {
+      const stats = await compiler('multi-line-basic', {
         options: {
           blocks: [
             {

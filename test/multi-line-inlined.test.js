@@ -5,7 +5,7 @@ describe('test suite for the inline case', () => {
 
   describe('an inline case with a string parameter', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
-      const stats = await compiler('inline-case', {
+      const stats = await compiler('multi-line-inlined', {
         options: {
           blocks: ['dev'],
         },
@@ -18,7 +18,7 @@ describe('test suite for the inline case', () => {
 
   describe('an inline case with an object parameter', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
-      const stats = await compiler('inline-case', {
+      const stats = await compiler('multi-line-inlined', {
         options: {
           blocks: [
             {

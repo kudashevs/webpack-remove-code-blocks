@@ -13,7 +13,7 @@ app.post('/update/:id', async (req, res) => {
 
   describe('a complex case with a string parameter and an object parameter at the same time', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
-      const stats = await compiler('complex-case', {
+      const stats = await compiler('multi-line-complex', {
         options: {
           blocks: [
             'info',

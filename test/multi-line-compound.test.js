@@ -12,7 +12,7 @@ var makeFoo = function(bar, baz) {
 
   describe('a compound case from the README.md file', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
-      const stats = await compiler('compound-case', {
+      const stats = await compiler('multi-line-compound', {
         options: {
           blocks: [
             'debug',
