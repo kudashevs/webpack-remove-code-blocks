@@ -5,7 +5,7 @@ const { createFsFromVolume, Volume } = require('memfs');
 function compileAsync(fixture, options = {}) {
   const compiler = webpack({
     context: path.resolve(__dirname, '..'),
-    entry: path.resolve(__dirname, `../${fixture}`),
+    entry: path.resolve(__dirname, `../fixtures/${fixture}`),
     output: {
       path: path.resolve(__dirname),
       filename: 'bundle.js',
