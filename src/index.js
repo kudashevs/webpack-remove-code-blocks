@@ -47,10 +47,12 @@ function RemoveCodeBlocksLoader(content) {
 
     let prefix = block.prefix ? regexEscape(block.prefix) : '';
     let suffix = block.suffix ? regexEscape(block.suffix) : '';
+    let start = regexEscape(block.start);
+    let end = regexEscape(block.end);
 
     // prettier-ignore
     let regex = new RegExp(
-      '([\\t ]*)' + prefix + '[\\t ]* ?' + block.start + '[\\t ]* ?' + suffix + '([\\s\\S]*)?' + prefix + '[\\t ]* ?' + block.end + '[\\t ]* ?' + suffix + '([\\t ]*)\\n?',
+      '([\\t ]*)' + prefix + '[\\t ]* ?' + start + '[\\t ]* ?' + suffix + '([\\s\\S]*)?' + prefix + '[\\t ]* ?' + end + '[\\t ]* ?' + suffix + '([\\t ]*)\\n?',
       'g'
     );
 
@@ -79,10 +81,7 @@ function shouldSkip(mode) {
  * @param {string} str
  */
 function regexEscape(str) {
-  return str.replace(
-    /([\^|\$|\.|\*|\+|\?|\=|\!|\:|\\|\/|\(|\)|\[|\]|\{|\}])/gi,
-    '\\$1'
-  );
+  return str.replace(/([\^|$|\.|\*|\+|\?|\=|\!|\:|\\|\/|\(|\)|\[|\]|\{|\}])/gi, '\\$1');
 }
 
 module.exports = RemoveCodeBlocksLoader;

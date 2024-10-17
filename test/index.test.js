@@ -66,6 +66,23 @@ describe('default test suite', () => {
     expect(loader.call({}, input)).toBe(expected);
   });
 
+  it('can use special characters in labels', () => {
+    getOptions.mockReturnValueOnce({
+      blocks: [
+        {
+          start: '*devblock:start!',
+          end: '*devblock:end$',
+          prefix: '<!--',
+          suffix: '-->',
+        },
+      ],
+    });
+    let input = 'visible <!-- *devblock:start! --> will be removed <!-- *devblock:end$ -->';
+    let expected = 'visible ';
+
+    expect(loader.call({}, input)).toBe(expected);
+  })
+
   it('can remove a code block marked in lower case', () => {
     let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
     let expected = 'visible ';
