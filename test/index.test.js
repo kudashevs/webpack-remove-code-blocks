@@ -38,14 +38,14 @@ describe('default test suite', () => {
     process.env.NODE_ENV = originalMode;
   });
 
-  it('can remove a block of code marked in the lower case', () => {
+  it('can remove a code block marked in lower case', () => {
     let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
     let expected = 'visible';
 
     expect(loader.call({}, input)).toBe(expected);
   });
 
-  it('cannot remove a block of code marked in the upper case', () => {
+  it('cannot remove a code block marked in upper case', () => {
     let input = 'visible /* DEVBLOCK:START */ won\'t be removed /* DEVBLOCK:END */';
     let expected = 'visible /* DEVBLOCK:START */ won\'t be removed /* DEVBLOCK:END */';
 
