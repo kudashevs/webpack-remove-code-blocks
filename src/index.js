@@ -50,11 +50,13 @@ function RemoveCodeBlocksLoader(content) {
 
     // prettier-ignore
     let regex = new RegExp(
-      '[\\t ]*' + prefix + ' ?' + block.start + ' ?' + suffix + '[\\s\\S]*?' + prefix + ' ?' + block.end + ' ?' + suffix + '([\\t ]*\\n)?',
+      '([\\t ]*)' + prefix + '[\\t ]* ?' + block.start + '[\\t ]* ?' + suffix + '([\\s\\S]*)?' + prefix + '[\\t ]* ?' + block.end + '[\\t ]* ?' + suffix + '([\\t ]*)\\n?',
       'g'
     );
 
-    content = content.replace(regex, '');
+    content = content.replace(regex, (substring, prespace, content, postspace) => {
+      return content.includes('\n') ? '' : prespace + postspace;
+    });
   });
 
   if (this.cacheable) {

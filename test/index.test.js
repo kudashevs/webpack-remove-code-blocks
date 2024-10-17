@@ -44,7 +44,7 @@ describe('default test suite', () => {
 
   it('can remove a code block marked through the colon', () => {
     let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
-    let expected = 'visible';
+    let expected = 'visible ';
 
     expect(loader.call({}, input)).toBe(expected);
   });
@@ -61,14 +61,14 @@ describe('default test suite', () => {
       ],
     });
     let input = 'visible /* devblock_start */ will be removed /* devblock_end */';
-    let expected = 'visible';
+    let expected = 'visible ';
 
     expect(loader.call({}, input)).toBe(expected);
   });
 
   it('can remove a code block marked in lower case', () => {
     let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
-    let expected = 'visible';
+    let expected = 'visible ';
 
     expect(loader.call({}, input)).toBe(expected);
   });

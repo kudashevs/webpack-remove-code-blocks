@@ -1,7 +1,7 @@
 const compiler = require('./helpers/compiler.js');
 
 describe('test suite for the inline case', () => {
-  const EXPECTED_OUTPUT = `console.log('User was created ' + user.name + ' ' + user.age);`;
+  const EXPECTED_OUTPUT = `console.log('User was created ' + user.name + ' ' +  user.age);`;
 
   describe('an inline case with a string parameter', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
