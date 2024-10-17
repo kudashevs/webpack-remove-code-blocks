@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const { createFsFromVolume, Volume } = require('memfs');
 
-module.exports = function testCompiler(fixture, options = {}) {
+function compileAsync(fixture, options = {}) {
   const compiler = webpack({
     context: path.resolve(__dirname, '..'),
     entry: path.resolve(__dirname, `../${fixture}`),
@@ -39,4 +39,6 @@ module.exports = function testCompiler(fixture, options = {}) {
       return resolve(stats);
     });
   });
-};
+}
+
+module.exports = compileAsync;
