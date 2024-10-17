@@ -2,6 +2,7 @@
 'use strict';
 
 const loaderUtils = require('loader-utils');
+const os = require('os');
 
 const EXCLUDE_MODES = ['development'];
 const DEFAULT_LABEL = 'devblock';
@@ -25,6 +26,7 @@ function generateDefaultOptions(label) {
     end: `${label}:${BLOCK_END}`,
     prefix: COMMENT_START,
     suffix: COMMENT_END,
+    replacement: null,
   };
 }
 
@@ -57,6 +59,15 @@ function RemoveCodeBlocksLoader(content) {
     );
 
     content = content.replace(regex, (substring, prespace, content, postspace) => {
+      if (hasReplacement(block)) {
+        if (/\r|\n/.test(content)) {
+          let trailingSpaces = content.match(/\*?([ \t]*)$/g)[0] || '';
+          return trailingSpaces + block.replacement + os.EOL;
+        }
+
+        return block.replacement;
+      }
+
       return content.includes('\n') ? '' : prespace + postspace;
     });
   });
@@ -82,6 +93,15 @@ function shouldSkip(mode) {
  */
 function regexEscape(str) {
   return str.replace(/([\^$.*+?=!:\\\/()\[\]{}])/gi, '\\$1');
+}
+
+/**
+ * @param block
+ *
+ * @returns {boolean}
+ */
+function hasReplacement(block) {
+  return block.hasOwnProperty('replacement') && block.replacement !== null;
 }
 
 module.exports = RemoveCodeBlocksLoader;
