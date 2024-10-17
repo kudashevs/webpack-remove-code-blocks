@@ -81,7 +81,7 @@ function shouldSkip(mode) {
  * @param {string} str
  */
 function regexEscape(str) {
-  return str.replace(/([\^|$|\.|\*|\+|\?|\=|\!|\:|\\|\/|\(|\)|\[|\]|\{|\}])/gi, '\\$1');
+  return str.replace(/([\^$.*+?=!:\\\/()\[\]{}])/gi, '\\$1');
 }
 
 module.exports = RemoveCodeBlocksLoader;
