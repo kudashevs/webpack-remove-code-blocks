@@ -18,6 +18,12 @@ jobs:
         webpack-version: [3, 4, 5]
 
     steps:
+      - name: Setup Git
+        if: matrix.os == 'windows-latest'
+        run: |
+          git config --global core.autocrlf false
+          git config --global core.eol lf
+
       - uses: actions/checkout@v4
 
       - name: Use Node.js ${{ matrix.node-version }}
@@ -28,6 +34,10 @@ jobs:
       - name: Install webpack ${{ matrix.webpack-version }}
         run: npm i webpack@${{ matrix.webpack-version }}
 
-      - name: Run tests for ${{ matrix.webpack-version }}
-        run: npm test
+      - name: Run tests for webpack ${{ matrix.webpack-version }}
+        if: matrix.os == 'windows-latest'
+        run: $env:NODE_OPTIONS = "--openssl-legacy-provider"; npm test
 
+      - name: Run tests for webpack ${{ matrix.webpack-version }}
+        if: matrix.os != 'windows-latest'
+        run: export NODE_OPTIONS=--openssl-legacy-provider && npm test
