@@ -29,16 +29,6 @@ function generateDefaultOptions(label) {
 }
 
 /**
- * @param {string} str
- */
-function regexEscape(str) {
-  return str.replace(
-    /([\^|\$|\.|\*|\+|\?|\=|\!|\:|\\|\/|\(|\)|\[|\]|\{|\}])/gi,
-    '\\$1'
-  );
-}
-
-/**
  * @param {string} content
  *
  * @return {string}
@@ -81,6 +71,16 @@ function RemoveCodeBlocksLoader(content) {
  */
 function shouldSkip(mode) {
   return EXCLUDE_MODES.includes(mode);
+}
+
+/**
+ * @param {string} str
+ */
+function regexEscape(str) {
+  return str.replace(
+    /([\^|\$|\.|\*|\+|\?|\=|\!|\:|\\|\/|\(|\)|\[|\]|\{|\}])/gi,
+    '\\$1'
+  );
 }
 
 module.exports = RemoveCodeBlocksLoader;
