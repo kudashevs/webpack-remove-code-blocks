@@ -42,7 +42,7 @@ describe('default test suite', () => {
     process.env.NODE_ENV = originalMode;
   });
 
-  it('can remove a code block marked through the colon', () => {
+  it('can remove a code block marked through the colon by default', () => {
     let input = 'visible /* devblock:start */ will be removed /* devblock:end */';
     let expected = 'visible ';
 
