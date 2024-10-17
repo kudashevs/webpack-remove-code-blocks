@@ -19,15 +19,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm i webpack@${{ matrix.webpack-version }}
-      - run: |
-          if [ "${{matrix.node-version}}" != "16.x" ]; then
-            export NODE_OPTIONS=--openssl-legacy-provider && npm test
-          else
-            npm test
-          fi
+
+      - name: Install webpack ${{ matrix.webpack-version }}
+        run: npm i webpack@${{ matrix.webpack-version }}
+
+      - name: Run tests for ${{ matrix.webpack-version }}
+        run: npm test
 
