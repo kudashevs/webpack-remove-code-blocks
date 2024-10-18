@@ -6,37 +6,24 @@ describe('default test suite', () => {
   const loader = require('../src/index');
   const originalMode = process.env.NODE_ENV;
 
-  it('can proceed in production environment', () => {
-    process.env.NODE_ENV = 'production';
+  it.each([
+    ['production', '/* devblock:start */ any /* devblock:end */', ''],
+    ['test', '/* devblock:start */ any /* devblock:end */', ''],
+  ])('can proceed in %s environment', (environment, input, expected) => {
+    process.env.NODE_ENV = environment;
 
-    let input = '/* devblock:start */ visible /* devblock:end */';
-    let expected = '';
-
-    expect(process.env.NODE_ENV).toBe('production');
+    expect(process.env.NODE_ENV).toBe(environment);
     expect(loader.call({}, input)).toBe(expected);
 
     process.env.NODE_ENV = originalMode;
   });
 
-  it('can proceed in test environment', () => {
-    process.env.NODE_ENV = 'test';
+  it.each([
+    ['development', '/* devblock:start */ any /* devblock:end */', '/* devblock:start */ any /* devblock:end */'],
+  ])('can skip in %s environment', (environment, input, expected) => {
+    process.env.NODE_ENV = environment;
 
-    let input = '/* devblock:start */ visible /* devblock:end */';
-    let expected = '';
-
-    expect(process.env.NODE_ENV).toBe('test');
-    expect(loader.call({}, input)).toBe(expected);
-
-    process.env.NODE_ENV = originalMode;
-  });
-
-  it('can skip in development environment', () => {
-    process.env.NODE_ENV = 'development';
-
-    let input = '/* devblock:start */ visible /* devblock:end */';
-    let expected = '/* devblock:start */ visible /* devblock:end */';
-
-    expect(process.env.NODE_ENV).toBe('development');
+    expect(process.env.NODE_ENV).toBe(environment);
     expect(loader.call({}, input)).toBe(expected);
 
     process.env.NODE_ENV = originalMode;
