@@ -7,6 +7,16 @@ The loader can be incorporated into the build process to remove the code that yo
 the usage of multiple blocks. The loader was originated from [Webpack Remove Block](https://github.com/ee01/webpack-remove-blocks). 
 
 
+## Install
+
+```bash
+# NPM
+npm install --save-dev webpack-remove-code-blocks
+# Yarn
+yarn add --dev webpack-remove-code-blocks
+```
+
+
 ## Usage example
 
 Let's start with a simple usage example. For example, we want to remove some code from a bundle while we build a project.
