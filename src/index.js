@@ -54,21 +54,25 @@ function RemoveCodeBlocksLoader(content) {
 
     // prettier-ignore
     let regex = new RegExp(
-      '([\\t ]*)' + prefix + '[\\t ]* ?' + start + '[\\t ]* ?' + suffix + '([\\s\\S]*)?' + prefix + '[\\t ]* ?' + end + '[\\t ]* ?' + suffix + '([\\t ]*)\\n?',
+      '([\\s\\S]*?)([\\t ]*)' + prefix + '[\\t ]* ?' + start + '[\\t ]* ?' + suffix + '([\\s\\S]*?)?' + prefix + '[\\t ]* ?' + end + '[\\t ]* ?' + suffix + '([\\t ]*)\\n?',
       'g'
     );
 
-    content = content.replace(regex, (substring, prespace, content, postspace) => {
+    content = content.replaceAll(regex, (substring, preceding, prespace, content, postspace) => {
       if (hasReplacement(block)) {
         if (hasNewLine(content)) {
           let trailingSpaces = content.match(/\*?([ \t]*)$/g)[0] || '';
-          return trailingSpaces + block.replacement + os.EOL;
+          return preceding + trailingSpaces + block.replacement + os.EOL;
         }
 
-        return block.replacement;
+        return preceding + block.replacement;
       }
 
-      return hasNewLine(content) ? '' : prespace + postspace;
+      return hasNewLine(content)
+        ?  preceding + ''
+        : /\r?\n$/.test(preceding)
+            ? preceding + ''
+            : preceding + prespace;
     });
   });
 
