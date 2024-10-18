@@ -60,7 +60,7 @@ function RemoveCodeBlocksLoader(content) {
 
     content = content.replace(regex, (substring, prespace, content, postspace) => {
       if (hasReplacement(block)) {
-        if (/\r|\n/.test(content)) {
+        if (hasNewLine(content)) {
           let trailingSpaces = content.match(/\*?([ \t]*)$/g)[0] || '';
           return trailingSpaces + block.replacement + os.EOL;
         }
@@ -68,7 +68,7 @@ function RemoveCodeBlocksLoader(content) {
         return block.replacement;
       }
 
-      return content.includes('\n') ? '' : prespace + postspace;
+      return hasNewLine(content) ? '' : prespace + postspace;
     });
   });
 
@@ -102,6 +102,15 @@ function regexEscape(str) {
  */
 function hasReplacement(block) {
   return block.hasOwnProperty('replacement') && block.replacement !== null;
+}
+
+/**
+ * @param {string} str
+ *
+ * @returns {boolean}
+ */
+function hasNewLine(str) {
+  return /\r|\n/.test(str);
 }
 
 module.exports = RemoveCodeBlocksLoader;
