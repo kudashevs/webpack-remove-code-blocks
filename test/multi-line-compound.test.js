@@ -22,6 +22,7 @@ var makeFoo = function(bar, baz) {
               end: 'devblock_end',
               prefix: '/*',
               suffix: '*/',
+              keepspace: true,
             },
           ],
         },

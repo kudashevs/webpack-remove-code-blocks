@@ -1,11 +1,27 @@
 const compiler = require('./helpers/compiler.js');
 
 describe('test suite for the inline case', () => {
-  describe('an inline case with a string parameter', () => {
-    const EXPECTED_OUTPUT = `console.log('User was created ' + user.name + ' ' + user.age);`;
+  const EXPECTED_OUTPUT = `/* this comment should not be removed */
+let fizzBuzz = function (n) {
+  let result = '';
+  for (i = 1; i <= n; i++) {
+    if (i % 15 === 0) {
+      result += "FizzBuzz\\n";
+    } else if (i % 3 === 0) {
+      result += "Fizz\\n";
+    } else if (i % 5 === 0) {
+      result += "Buzz\\n";
+    } else {
+      result += i.toString() + "\\n";
+    }
+  }
 
+  return result;
+};`;
+
+  describe('a repeated case with a string parameter', () => {
     it('can remove the marked block and leave other code unchanged', async () => {
-      const stats = await compiler('multi-line-inlined', {
+      const stats = await compiler('multi-line-repeated', {
         options: {
           blocks: ['dev'],
         },
@@ -17,10 +33,8 @@ describe('test suite for the inline case', () => {
   });
 
   describe('an inline case with an object parameter', () => {
-    const EXPECTED_OUTPUT = `console.log('User was created ' + user.name + ' ' +  user.age);`;
-
     it('can remove the marked block and leave other code unchanged', async () => {
-      const stats = await compiler('multi-line-inlined', {
+      const stats = await compiler('multi-line-repeated', {
         options: {
           blocks: [
             {
@@ -28,7 +42,7 @@ describe('test suite for the inline case', () => {
               end: 'dev:end',
               prefix: '/*',
               suffix: '*/',
-              keepspace: true,
+              keepspace: false,
             },
           ],
         },

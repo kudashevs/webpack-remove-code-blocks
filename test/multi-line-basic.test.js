@@ -39,6 +39,7 @@ module.exports = function addOne(num) {
               end: 'devblock:end',
               prefix: '/*',
               suffix: '*/',
+              keepspace: false,
             },
           ],
         },

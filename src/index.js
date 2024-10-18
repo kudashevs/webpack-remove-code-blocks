@@ -26,6 +26,7 @@ function generateDefaultOptions(label) {
     end: `${label}:${BLOCK_END}`,
     prefix: COMMENT_START,
     suffix: COMMENT_END,
+    keepspace: false,
     replacement: null,
   };
 }
@@ -69,8 +70,9 @@ function RemoveCodeBlocksLoader(content) {
       }
 
       return hasNewLine(content)
-        ?  preceding + ''
-        : /\r?\n$/.test(preceding)
+        ? block.keepspace ? preceding + postspace : preceding + ''
+        : block.keepspace ? preceding + prespace + postspace :
+          /\r?\n$/.test(preceding)
             ? preceding + ''
             : preceding + prespace;
     });

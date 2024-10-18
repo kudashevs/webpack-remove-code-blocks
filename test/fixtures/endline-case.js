@@ -1,0 +1,1 @@
+console.log('User was created ' + user.name); // remove // change to logger

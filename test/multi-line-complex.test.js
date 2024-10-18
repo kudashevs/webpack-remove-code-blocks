@@ -22,6 +22,7 @@ app.post('/update/:id', async (req, res) => {
               end: 'stage_only_stop',
               prefix: '/*',
               suffix: '*/',
+              keepspace: false,
             },
           ],
         },
