@@ -2,6 +2,16 @@
 
 All Notable changes to ` webpack-remove-code-blocks` will be documented in this file
 
+## [v1.0.0 - 2024-10-21](https://github.com/kudashevs/webpack-remove-code-blocks/compare/v0.1.6...v0.9.0)
+
+- Add support fot Node.js 22
+- Add a replacement option
+- Add .editorconfig file
+- Drop support for Node.js 16
+- Migrate to Jest testing framework
+- Update README.md
+- Massive refactoring
+
 ## [v0.1.6 - 2023-11-26](https://github.com/kudashevs/webpack-remove-code-blocks/compare/v0.1.5...v0.1.6)
 
 - Add support for Node.js 18, 20, 21
