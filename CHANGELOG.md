@@ -12,6 +12,8 @@ All Notable changes to ` webpack-remove-code-blocks` will be documented in this 
 - Update README.md
 - Massive refactoring
 
+Note: It breaks the versioning because this is a candidate for the initial release.
+
 ## [v0.1.6 - 2023-11-26](https://github.com/kudashevs/webpack-remove-code-blocks/compare/v0.1.5...v0.1.6)
 
 - Add support for Node.js 18, 20, 21
