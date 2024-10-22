@@ -101,7 +101,7 @@ function regexEscape(str) {
  * @returns {boolean}
  */
 function hasReplacement(block) {
-  return block.hasOwnProperty('replacement') && block.replacement !== null;
+  return Object.prototype.hasOwnProperty.call(block, 'replacement') && block.replacement !== null;
 }
 
 /**
