@@ -6,6 +6,10 @@ describe('default test suite', () => {
   const loader = require('../src/index');
   const originalMode = process.env.NODE_ENV;
 
+  afterEach(() => {
+    jest.resetAllMocks();
+  });
+
   it.each([
     ['production', '/* devblock:start */ any /* devblock:end */', ''],
     ['test', '/* devblock:start */ any /* devblock:end */', ''],
@@ -27,6 +31,24 @@ describe('default test suite', () => {
     expect(loader.call({}, input)).toBe(expected);
 
     process.env.NODE_ENV = originalMode;
+  });
+
+  it('can skip in development from webpack options', () => {
+    getOptions.mockReturnValueOnce({
+      blocks: [
+        {
+          start: 'dev:start',
+          end: 'dev:end',
+          prefix: '/*',
+          suffix: '*/',
+        },
+      ],
+    });
+
+    let input = '/* dev:start */ any /* dev:end */';
+    let expected = '/* dev:start */ any /* dev:end */';
+
+    expect(loader.call({mode: 'development'}, input)).toBe(expected);
   });
 
   it('can remove a code block marked through the colon by default', () => {

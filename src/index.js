@@ -36,7 +36,7 @@ function generateDefaultOptions(label) {
  * @return {string}
  */
 function RemoveCodeBlocksLoader(content) {
-  if (shouldSkip(process.env.NODE_ENV)) {
+  if (shouldSkip(this.mode || process.env.NODE_ENV)) {
     return content;
   }
 
