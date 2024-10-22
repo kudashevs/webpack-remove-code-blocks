@@ -54,7 +54,7 @@ function RemoveCodeBlocksLoader(content) {
 
     // prettier-ignore
     let regex = new RegExp(
-      '([\\t ]*)' + prefix + '[\\t ]* ?' + start + '[\\t ]* ?' + suffix + '([\\s\\S]*)?' + prefix + '[\\t ]* ?' + end + '[\\t ]* ?' + suffix + '([\\t ]*)\\n?',
+      '([\\t ]*)' + prefix + '[\\t ]* ?' + start + '[\\t ]* ?' + suffix + '([\\s\\S]*?)?' + prefix + '[\\t ]* ?' + end + '[\\t ]* ?' + suffix + '([\\t ]*)\\n?',
       'g'
     );
 
