@@ -1,6 +1,6 @@
 {
   "name": "webpack-remove-code-blocks",
-  "version": "0.1.6",
+  "version": "0.10.1",
   "description": "A webpack plugin that removes marked blocks of code from any code processed by webpack.",
   "license": "MIT",
   "main": "./src/index.js",
