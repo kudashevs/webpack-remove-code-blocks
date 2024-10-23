@@ -2,6 +2,10 @@
 
 All Notable changes to ` webpack-remove-code-blocks` will be documented in this file
 
+## [v0.10.1 - 2024-10-23](https://github.com/kudashevs/webpack-remove-code-blocks/compare/v0.10.0...v0.10.1)
+
+- Fix a wrong version in package.json
+
 ## [v0.10.0 - 2024-10-22](https://github.com/kudashevs/webpack-remove-code-blocks/compare/v0.9.0...v0.10.0)
 
 - Add skipping modes from mode option
